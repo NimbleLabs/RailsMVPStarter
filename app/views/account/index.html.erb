@@ -13,6 +13,13 @@
         <p class="card-text">
           Email: <strong><%= current_user.email %></strong>
         </p>
+
+        <% if @subscription.present? %>
+            <p class="card-text">
+              Subscription: <strong><%= @subscription[:name] %></strong>
+            </p>
+        <% end %>
+
       </div>
     </div>
   </div>

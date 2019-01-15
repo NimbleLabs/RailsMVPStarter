@@ -30,6 +30,7 @@ gem 'devise'
 gem 'recaptcha'
 gem 'omniauth-google-oauth2'
 gem 'friendly_id'
+gem 'stripe'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

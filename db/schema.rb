@@ -15,6 +15,23 @@ ActiveRecord::Schema.define(version: 2019_01_15_200838) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "name_on_card"
+    t.string "card_number"
+    t.integer "exp_month"
+    t.integer "exp_year"
+    t.string "cvc"
+    t.string "zip_code"
+    t.string "card_type"
+    t.string "stripe_id"
+    t.string "last_4_digits"
+    t.string "cvc_check"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
+
   create_table "friendly_id_slugs", id: :serial, force: :cascade do |t|
     t.string "slug", null: false
     t.integer "sluggable_id", null: false
@@ -33,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_200838) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "full_name"
     t.integer "role", default: 0
     t.string "auth_token"
     t.string "stripe_customer_id"
@@ -42,8 +60,11 @@ ActiveRecord::Schema.define(version: 2019_01_15_200838) do
     t.string "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "stripe_subscription_id"
+    t.string "stripe_charge_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "credit_cards", "users"
 end
