@@ -90,6 +90,8 @@ GEM
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.25)
+    friendly_id (5.2.4)
+      activerecord (>= 4.0.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.7)
@@ -243,6 +245,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  friendly_id
   jbuilder (~> 2.5)
   listen (>= 3.0.5, < 3.2)
   omniauth-google-oauth2
