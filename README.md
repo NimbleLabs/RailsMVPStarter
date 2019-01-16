@@ -14,6 +14,6 @@ This project aims to provide a base line of system level services so you start w
 
 ## Screenshot
 
-![Rails MVP Starter App Screenshot](https://www.dropbox.com/s/mhkhl3ev4vr0k0p/ARailsStarterScreenshot.png?dl=0)
+![Rails MVP Starter App Screenshot](public/images/screenshot.png)
 
 
