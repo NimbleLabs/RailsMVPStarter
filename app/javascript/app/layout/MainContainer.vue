@@ -10,11 +10,7 @@
             return {
                 message: "Hello yo yo Harris here!"
             }
-        },
-        mounted() {
-            console.log('MainContainer mounted')
         }
-
     }
 </script>
 

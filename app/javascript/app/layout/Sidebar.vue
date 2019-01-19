@@ -1,6 +1,6 @@
 <template>
     <div class="sidebar">
-        <nav class="mt-5 d-flex">
+        <nav class="d-flex">
 
             <router-link :to="{ name: 'home'}" class="d-flex justify-content-center mt-3 nav-link">
 
