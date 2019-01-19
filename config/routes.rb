@@ -14,6 +14,12 @@ Rails.application.routes.draw do
   get 'home/index'
   root to: 'home#index'
 
+  namespace :api do
+    namespace :v1, format: :json do
+      get 'users/dev', to: 'users#dev_user', as: 'dev_user'
+    end
+  end
+
   get 'app', to: 'app#index', as: 'app'
   get 'app/*other' => 'app#index'
 end

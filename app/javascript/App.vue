@@ -6,9 +6,9 @@
 </template>
 
 <script>
-
     import Sidebar from './app/layout/Sidebar.vue'
     import MainContainer from './app/layout/MainContainer.vue'
+    import UserService from './app/services/UserService'
 
     export default {
         components: {
@@ -19,6 +19,10 @@
             return {
                 message: "Hello yo yo Harris here!"
             }
+        },
+        mounted() {
+            var service = new UserService()
+            service.dev()
         }
     }
 </script>
