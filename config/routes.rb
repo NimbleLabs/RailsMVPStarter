@@ -13,4 +13,7 @@ Rails.application.routes.draw do
   get 'terms', to: 'home#terms', as: 'terms'
   get 'home/index'
   root to: 'home#index'
+
+  get 'app', to: 'app#index', as: 'app'
+  get 'app/*other' => 'app#index'
 end
