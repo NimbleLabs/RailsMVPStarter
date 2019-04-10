@@ -29,6 +29,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   enum role: [:user, :owner, :admin]
 
+  after_create :send_welcome_mail
   before_create :generate_token
 
   def self.from_omniauth(access_token)
@@ -51,5 +52,9 @@ class User < ApplicationRecord
     begin
       self.auth_token = SecureRandom.hex.to_s
     end while self.class.exists?(auth_token: auth_token)
+  end
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver_later
   end
 end
