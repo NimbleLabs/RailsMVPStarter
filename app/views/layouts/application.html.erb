@@ -3,6 +3,7 @@
 <head>
   <title>RailsMVPStarter</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <%= render 'shared/google_tag_manager' %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
@@ -11,9 +12,11 @@
 </head>
 
 <body>
-
+<%= render 'shared/gtm_noscript' %>
 <br><br>
+
 <%= render 'shared/nav' %>
+<%= render 'shared/display_message' %>
 <%= yield %>
 
 </body>

@@ -37,3 +37,4 @@ yarn-debug.log*
 
 misc.txt
 .idea
+.env
