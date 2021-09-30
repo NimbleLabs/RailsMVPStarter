@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_29_174009) do
+ActiveRecord::Schema.define(version: 2021_09_30_193223) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string "last4"
+    t.string "brand"
+    t.integer "exp_month"
+    t.integer "exp_year"
+    t.string "country"
+    t.string "stripe_id"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_credit_cards_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -35,6 +48,7 @@ ActiveRecord::Schema.define(version: 2021_09_29_174009) do
     t.string "provider"
     t.string "uid"
     t.string "image_url"
+    t.string "stripe_customer_id"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid"
@@ -42,4 +56,5 @@ ActiveRecord::Schema.define(version: 2021_09_29_174009) do
     t.index ["slug"], name: "index_users_on_slug"
   end
 
+  add_foreign_key "credit_cards", "users"
 end
