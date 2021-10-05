@@ -17,7 +17,8 @@ class CreditCardsController < ApplicationController
       customer: customer['id'],
       setup_future_usage: 'off_session',
       amount: 9900,
-      currency: 'usd'
+      currency: 'usd',
+      description: 'MVP Starter Application'
     )
 
     @credit_card = CreditCard.new
@@ -25,12 +26,9 @@ class CreditCardsController < ApplicationController
 
   # POST /credit_cards or /credit_cards.json
   def create
-    @payment_methods = Stripe::PaymentMethod.list(
-      customer: current_user.stripe_customer_id,
-      type: 'card'
-    )
+    payment_method_id = params[:payment_method_id]
+    @payment_method =  Stripe::PaymentMethod.retrieve(payment_method_id)
 
-    @payment_method = @payment_methods.data[0]
     @last_credit_card = @payment_method['card']
 
     credit_card_params = {

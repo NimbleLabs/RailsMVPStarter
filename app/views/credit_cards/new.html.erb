@@ -87,7 +87,8 @@
                     showError(result.error.message);
                 } else {
                     // The payment succeeded!
-                    orderComplete(result.paymentIntent.id);
+                    const paymentMethodId = result.paymentIntent.payment_method
+                    orderComplete(result.paymentIntent.id, paymentMethodId);
                 }
             });
     };
@@ -95,7 +96,7 @@
     /* ------- UI helpers ------- */
 
     // Shows a success message when the payment is complete
-    var orderComplete = function (paymentIntentId) {
+    var orderComplete = function (paymentIntentId, paymentMethodId) {
         loading(false);
         document
             .querySelector(".result-message a")
@@ -106,7 +107,7 @@
         document.querySelector(".result-message").classList.remove("hidden");
         document.querySelector("button").disabled = true;
 
-        saveLastCard()
+        saveCurrentCard(paymentMethodId)
     };
 
     // Show the customer the error from Stripe if their card fails to charge
@@ -133,18 +134,19 @@
         }
     };
 
-    function saveLastCard() {
+    function saveCurrentCard(paymentMethodId) {
         fetch("/payments.json", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
                 'X-CSRF-Token': Rails.csrfToken()
-            }
+            },
+            body: JSON.stringify({payment_method_id: paymentMethodId})
         }).then(function (result) {
             return result.json();
         }).then(function (data) {
             // TODO: route to account page
-            window.location.href = '/account'
+            // window.location.href = '/account'
         })
     }
 
