@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :credit_cards, path: 'payments', only: [:new, :create, :destroy]
   get 'admin', to: 'admin#index', as: 'admin'
   get 'account', to: 'account#index', as: 'account'
 

@@ -11,7 +11,7 @@ RSpec.describe "Accounts", type: :request do
       user = FactoryBot.create(:user)
       sign_in user
       get '/account'
-      headline = 'Account#index'
+      headline = 'Rails MVP Starter Account'
       expect(response.status).to eq 200
       expect(response.parsed_body.index(headline).present?).to eq true
     end

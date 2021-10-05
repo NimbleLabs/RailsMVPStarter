@@ -22,6 +22,7 @@
 #  provider               :string
 #  uid                    :string
 #  image_url              :string
+#  stripe_customer_id     :string
 #
 class User < ApplicationRecord
   extend FriendlyId
@@ -35,8 +36,14 @@ class User < ApplicationRecord
 
   validates_presence_of :name
 
+  has_many :credit_cards
+
   before_create :on_before_create
   after_create :on_after_create
+
+  def customer?
+    stripe_customer_id.present? && credit_cards.present?
+  end
 
   def on_before_create
     self.auth_token = SecureRandom.hex.to_s
