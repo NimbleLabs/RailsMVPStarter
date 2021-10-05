@@ -16,11 +16,13 @@
 
 <body>
 <%= render 'shared/gtm_noscript' %>
-<br><br>
 
 <%= render 'shared/nav' %>
-<%= render 'shared/display_message' %>
-<%= yield %>
+
+<div class="container">
+  <%= render 'shared/display_message' %>
+  <%= yield %>
+</div>
 
 </body>
 </html>

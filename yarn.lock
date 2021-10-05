@@ -7,6 +7,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
   integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
+"@rails/ujs@^7.0.0-alpha2":
+  version "7.0.0-alpha2"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-7.0.0-alpha2.tgz#c9b0f7052f47de164d55706937157434adc73039"
+  integrity sha512-kETfrqDAxWFjt7WS5nf8/Bw9xC+XLys1FtogSWzbDiJdsTeaY084W77RW0dr6b3q8Wi6vVAbeFpU9tzE4Th0cw==
+
 anymatch@~3.1.2:
   version "3.1.2"
   resolved "https://registry.yarnpkg.com/anymatch/-/anymatch-3.1.2.tgz#c0557c096af32f106198f4f4e2a383537e378716"
