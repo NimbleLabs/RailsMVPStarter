@@ -8,6 +8,30 @@
     @apply form-control
   }
 
+  .w-100 {
+    @apply w-full
+  }
+
+  .rounded-pill {
+    @apply rounded-3xl
+  }
+
+  .d-flex {
+    @apply flex
+  }
+
+  .align-items-center {
+    @apply items-center
+  }
+
+  .shadow-lg {
+    box-shadow: 0 1rem 3rem rgb(0 0 0 / 18%) !important;
+  }
+
+  .btn {
+    text-transform: inherit;
+  }
+
   .btn-min {
     min-width: 150px;
   }

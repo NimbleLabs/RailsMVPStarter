@@ -6,7 +6,7 @@
 
         <h1 class="display-6 mt-2 mb-4 text-center">Welcome Back!</h1>
 
-        <%= google_sign_in_button class: 'btn btn-blue w-100 w-full rounded-pill', proceed_to: api_v1_process_google_oauth_url do %>
+        <%= google_sign_in_button class: 'btn btn-blue w-100 rounded-pill', proceed_to: api_v1_process_google_oauth_url do %>
           <%= image_tag('google.png', alt: 'Google', width: 32, height: 32) %>
           <span class="p-2">Sign in with Google</span>
         <% end %>
