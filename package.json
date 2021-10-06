@@ -4,8 +4,10 @@
   "dependencies": {
     "@popperjs/core": "^2.10.2",
     "@rails/ujs": "^7.0.0-alpha2",
+    "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.7",
     "bootstrap": "^5.1.2",
+    "daisyui": "^1.14.2",
     "esbuild": "^0.13.4",
     "postcss": "^8.3.9",
     "sass": "^1.42.1",
