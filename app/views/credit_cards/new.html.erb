@@ -51,6 +51,12 @@
     // A reference to Stripe.js initialized with your real test publishable API key.
     var stripe = Stripe("<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>");
     const clientSecret = '<%= @client_secret %>'
+    var subscription_id = null
+
+    <% if @subscription_id.present? %>
+    subscription_id = "<%= @subscription_id %>"
+    <% end %>
+
     // Disable the button until we have Stripe set up on the page
     document.querySelector("button").disabled = true;
 
@@ -184,7 +190,7 @@
                 "Content-Type": "application/json",
                 'X-CSRF-Token': Rails.csrfToken()
             },
-            body: JSON.stringify({payment_method_id: paymentMethodId})
+            body: JSON.stringify({payment_method_id: paymentMethodId, subscription_id: subscription_id})
         }).then(function (result) {
             return result.json();
         }).then(function (data) {

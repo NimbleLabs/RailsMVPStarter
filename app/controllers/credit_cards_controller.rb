@@ -19,6 +19,7 @@ class CreditCardsController < ApplicationController
 
       @title = "Subscribe to MVP Starter for $#{@plan.amount}/#{@plan.period}"
       @client_secret = @subscription.latest_invoice.payment_intent.client_secret
+      @subscription_id = @subscription.id
     else
       @title = 'Buy Rails MVP Starter for $99'
       @payment_intent = Stripe::PaymentIntent.create(
@@ -35,6 +36,10 @@ class CreditCardsController < ApplicationController
 
   # POST /credit_cards or /credit_cards.json
   def create
+    if params[:subscription_id].present?
+      current_user.update_columns(subscription_id: params[:subscription_id])
+    end
+
     payment_method_id = params[:payment_method_id]
     @payment_method =  Stripe::PaymentMethod.retrieve(payment_method_id)
 
