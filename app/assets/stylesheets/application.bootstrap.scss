@@ -1,1 +1,23 @@
 @import 'bootstrap/scss/bootstrap';
+
+.btn-primary {
+  @include button-variant($indigo-500, $indigo-500);
+}
+
+.btn-blue {
+  @include button-variant($blue-500, $blue-500);
+}
+
+.btn {
+  min-width: 150px;
+}
+
+a {
+  color: $gray-600;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $gray-800;
+  text-decoration: underline;
+}

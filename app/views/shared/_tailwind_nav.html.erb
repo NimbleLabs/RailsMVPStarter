@@ -1,0 +1,29 @@
+<div class="navbar-container navbar mb-2 shadow">
+  <div class="flex-1">
+
+    <%= link_to "Rails MVP Starter", root_path, class: 'text-lg text-gray-800' %>
+
+  </div>
+  <div class="flex-none hidden px-2 mx-2 lg:flex">
+    <div class="flex items-stretch">
+
+      <% if user_signed_in? %>
+
+        <%= link_to "Account", account_path, class: 'btn btn-ghost btn-sm rounded-btn' %>
+
+        <% if current_user.admin? %>
+          <%= link_to "Admin", admin_path, class: 'btn btn-ghost btn-sm rounded-btn' %>
+        <% end %>
+
+        <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-ghost btn-sm rounded-btn' %>
+
+      <% else %>
+
+        <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-ghost btn-sm rounded-btn' %>
+
+        <%= link_to 'Sign in', new_session_path(resource_name), class: 'btn btn-ghost btn-sm rounded-btn' %>
+
+      <% end %>
+    </div>
+  </div>
+</div>

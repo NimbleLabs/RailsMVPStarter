@@ -1,24 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsMVPStarter</title>
+  <title>Rails MVP Starter with Bootstrap</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <%= render 'shared/google_tag_manager' %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
   <%= javascript_include_tag "application", defer: true %>
-  <%= stylesheet_link_tag Rails.application.config.css_framework %>
+  <%= stylesheet_link_tag 'bootstrap' %>
 </head>
 
 <body>
 <%= render 'shared/gtm_noscript' %>
 
-<%= render 'shared/nav' %>
+<%= render 'shared/bootstrap_nav' %>
 
 <div class="container">
   <%= render 'shared/display_message' %>
-  <%= yield %>
+
+  <div>
+    <h1>Rails MVP Starter Application</h1>
+    <div>Welcome!</div>
+  </div>
+
 </div>
 
 </body>

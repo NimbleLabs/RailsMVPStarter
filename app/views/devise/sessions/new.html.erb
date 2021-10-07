@@ -1,30 +1,42 @@
-<h2>Log in</h2>
+<div class="row justify-content-md-center mt-5 grid grid-cols-6 gap-4">
+  <div class="col col-md-5 col-start-3 col-span-3">
 
-<%= google_sign_in_button 'Sign in with Google account', proceed_to: api_v1_process_google_oauth_url %>
+    <div class="card shadow-lg">
+      <div class="card-body">
 
-<h4> OR </h4>
+        <h1 class="display-6 mt-2 mb-4 text-center">Welcome Back!</h1>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <%= google_sign_in_button class: 'btn btn-blue w-100 rounded-pill', proceed_to: api_v1_process_google_oauth_url do %>
+          <%= image_tag('google.png', alt: 'Google', width: 32, height: 32) %>
+          <span class="p-2">Sign in with Google</span>
+        <% end %>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <%= render 'devise/shared/or_content' %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="mb-3 form-container">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control input input-bordered", placeholder: 'Email'  %>
+          </div>
+
+          <div class="mb-3 form-container">
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control input input-bordered", placeholder: 'Password'  %>
+          </div>
+
+          <% if devise_mapping.rememberable? %>
+            <div class="mb-3">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end %>
+
+          <div class="actions">
+            <%= f.submit "Log in", class: 'btn btn-primary btn-min rounded-pill' %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
