@@ -1,41 +1,42 @@
-<h1>Rails MVP Starter Account</h1>
+<h1>Account</h1>
 <p>
   Name: <%= current_user.name %>
 </p>
 
 <% if current_user.customer? %>
 
-  <h1>Credit Cards</h1>
+  <div class="mt-5">
+    <h4>Credit Cards</h4>
 
-  <table>
-    <thead>
-    <tr>
-      <th>Last4</th>
-      <th>Brand</th>
-      <th>Exp month</th>
-      <th>Exp year</th>
-      <th>Country</th>
-      <th></th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% current_user.credit_cards.each do |credit_card| %>
+    <table>
+      <thead>
       <tr>
-        <td><%= credit_card.last4 %></td>
-        <td><%= credit_card.brand %></td>
-        <td><%= credit_card.exp_month %></td>
-        <td><%= credit_card.exp_year %></td>
-        <td><%= credit_card.country %></td>
-        <td><%= link_to 'Remove', credit_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Last4</th>
+        <th>Brand</th>
+        <th>Exp month</th>
+        <th>Exp year</th>
+        <th>Country</th>
+        <th></th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </thead>
 
+      <tbody>
+      <% current_user.credit_cards.each do |credit_card| %>
+        <tr>
+          <td><%= credit_card.last4 %></td>
+          <td><%= credit_card.brand %></td>
+          <td><%= credit_card.exp_month %></td>
+          <td><%= credit_card.exp_year %></td>
+          <td><%= credit_card.country %></td>
+          <td><%= link_to 'Remove', credit_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
 
 <% else %>
-  <p>
-    <%= link_to 'Payment Setup', new_credit_card_path %>
-  </p>
+  <div class="mt-5">
+    <%= link_to 'Purchase MVP Starter!', new_credit_card_path, class: 'btn btn-primary' %>
+  </div>
 <% end %>
