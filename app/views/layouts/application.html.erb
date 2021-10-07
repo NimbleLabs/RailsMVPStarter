@@ -7,17 +7,22 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all'%>
-  <%= javascript_pack_tag 'application'%>
+  <%#= stylesheet_link_tag 'application', media: 'all'%>
+  <%#= javascript_pack_tag 'application'%>
+
+    <%= javascript_include_tag "application", defer: true %>
+    <%= stylesheet_link_tag "application" %>
 </head>
 
 <body>
 <%= render 'shared/gtm_noscript' %>
-<br><br>
 
 <%= render 'shared/nav' %>
-<%= render 'shared/display_message' %>
-<%= yield %>
+
+<div class="container">
+  <%= render 'shared/display_message' %>
+  <%= yield %>
+</div>
 
 </body>
 </html>
