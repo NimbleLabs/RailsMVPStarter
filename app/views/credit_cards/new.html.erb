@@ -1,7 +1,7 @@
 <script src="https://js.stripe.com/v3/"></script>
 
 <div class="my-5">
-  <h1> Buy Rails MVP Starter for $99</h1>
+  <h1><%= @title %></h1>
 </div>
 
 <div class="card shadow-lg md:w-1/3 w-full">
@@ -50,7 +50,7 @@
 
     // A reference to Stripe.js initialized with your real test publishable API key.
     var stripe = Stripe("<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>");
-    const clientSecret = '<%= @payment_intent['client_secret'] %>'
+    const clientSecret = '<%= @client_secret %>'
     // Disable the button until we have Stripe set up on the page
     document.querySelector("button").disabled = true;
 

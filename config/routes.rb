@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'plans', to: 'plans#index', as: 'plans'
+
   resources :credit_cards, path: 'payments', only: [:new, :create, :destroy]
   get 'admin', to: 'admin#index', as: 'admin'
   get 'account', to: 'account#index', as: 'account'

@@ -5,23 +5,32 @@ class CreditCardsController < ApplicationController
 
   # GET /credit_cards/new
   def new
+    set_customer
 
-    if current_user.stripe_customer_id.blank?
-      customer = Stripe::Customer.create(email: current_user.email)
-      current_user.update_columns(stripe_customer_id: customer['id'])
+    if params[:plan].present?
+      set_plan(params[:plan])
+
+      @subscription = Stripe::Subscription.create(
+        customer: @customer['id'],
+        items: [{ price: @plan.price_id, }],
+        payment_behavior: 'default_incomplete',
+        expand: ['latest_invoice.payment_intent']
+      )
+
+      @title = "Subscribe to MVP Starter for $#{@plan.amount}/#{@plan.period}"
+      @client_secret = @subscription.latest_invoice.payment_intent.client_secret
     else
-      customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+      @title = 'Buy Rails MVP Starter for $99'
+      @payment_intent = Stripe::PaymentIntent.create(
+        customer: @customer['id'],
+        setup_future_usage: 'off_session',
+        amount: 9900,
+        currency: 'usd',
+        description: 'MVP Starter Application'
+      )
+      @client_secret = @payment_intent['client_secret']
     end
 
-    @payment_intent = Stripe::PaymentIntent.create(
-      customer: customer['id'],
-      setup_future_usage: 'off_session',
-      amount: 9900,
-      currency: 'usd',
-      description: 'MVP Starter Application'
-    )
-
-    @credit_card = CreditCard.new
   end
 
   # POST /credit_cards or /credit_cards.json
@@ -72,6 +81,23 @@ class CreditCardsController < ApplicationController
   end
 
   private
+
+  def set_customer
+    if current_user.stripe_customer_id.blank?
+      @customer = Stripe::Customer.create(email: current_user.email)
+      current_user.update_columns(stripe_customer_id: @customer['id'])
+    else
+      @customer = Stripe::Customer.retrieve(current_user.stripe_customer_id)
+    end
+  end
+
+  def set_plan(plan)
+    if plan == 'monthly'
+      @plan = OpenStruct.new(price_id: ENV['STRIPE_MONTHLY_PRICE'], amount: 9, period: 'month')
+    else
+      @plan = OpenStruct.new(price_id: ENV['STRIPE_YEARLY_PRICE'], amount: 99, period: 'year')
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_credit_card
