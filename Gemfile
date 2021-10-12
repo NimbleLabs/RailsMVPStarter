@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.7.1'
+ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 # gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
@@ -36,6 +36,7 @@ gem 'google_sign_in'
 gem 'stripe'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
+gem 'stripe_event'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

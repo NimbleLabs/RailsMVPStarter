@@ -37,12 +37,12 @@ class CreditCardsController < ApplicationController
   # POST /credit_cards or /credit_cards.json
   def create
     if params[:subscription_id].present?
-      current_user.update_columns(subscription_id: params[:subscription_id])
+      subscription = Stripe::Subscription.retrieve(params[:subscription_id])
+      current_user.update_columns(subscription_id: subscription.id, subscription_status: subscription.status)
     end
 
     payment_method_id = params[:payment_method_id]
     @payment_method =  Stripe::PaymentMethod.retrieve(payment_method_id)
-
     @last_credit_card = @payment_method['card']
 
     credit_card_params = {

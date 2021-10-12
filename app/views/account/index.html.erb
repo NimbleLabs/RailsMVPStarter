@@ -8,35 +8,48 @@
   <div class="mt-5">
     <h4>Credit Cards</h4>
 
-    <table>
-      <thead>
-      <tr>
-        <th>Last4</th>
-        <th>Brand</th>
-        <th>Exp month</th>
-        <th>Exp year</th>
-        <th>Country</th>
-        <th></th>
-      </tr>
-      </thead>
-
-      <tbody>
+    <div class="flex flex-wrap">
       <% current_user.credit_cards.each do |credit_card| %>
-        <tr>
-          <td><%= credit_card.last4 %></td>
-          <td><%= credit_card.brand %></td>
-          <td><%= credit_card.exp_month %></td>
-          <td><%= credit_card.exp_year %></td>
-          <td><%= credit_card.country %></td>
-          <td><%= link_to 'Remove', credit_card, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+        <%= render partial: "credit_card", locals: { credit_card: credit_card } %>
       <% end %>
-      </tbody>
-    </table>
+    </div>
+
   </div>
 
 <% else %>
   <div class="mt-5">
     <%= link_to 'Purchase MVP Starter!', new_credit_card_path, class: 'btn btn-primary' %>
+  </div>
+<% end %>
+
+
+<% if current_user.payments.present? %>
+
+  <div class="my-5 overflow-x-auto">
+
+    <h4 class="my-2">Payments</h4>
+
+    <table class="table w-full table-compact">
+
+      <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% current_user.payments.each do |payment| %>
+        <tr>
+          <td><%= number_to_currency(payment.amount/100) %></td>
+          <td><%= payment.description %></td>
+          <td><%= payment.status %></td>
+          <td><%= Time.at(payment.created).strftime("%m/%d/%Y")  %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
   </div>
 <% end %>

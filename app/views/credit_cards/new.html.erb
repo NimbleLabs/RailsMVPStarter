@@ -120,8 +120,7 @@
     // prompt the user to enter authentication details without leaving your page.
     var payWithCard = function (stripe, card, clientSecret) {
         loading(true);
-        stripe
-            .confirmCardPayment(clientSecret, {
+        stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
                     card: card
                 }
@@ -147,8 +146,7 @@
     // Shows a success message when the payment is complete
     var orderComplete = function (paymentIntentId, paymentMethodId) {
         loading(false);
-        document
-            .querySelector(".result-message a")
+        document.querySelector(".result-message a")
             .setAttribute(
                 "href",
                 "https://dashboard.stripe.com/test/payments/" + paymentIntentId
@@ -194,11 +192,9 @@
         }).then(function (result) {
             return result.json();
         }).then(function (data) {
-            // TODO: route to account page
-            // window.location.href = '/account'
+            window.location.href = '/account'
         })
     }
-
 
 </script>
 
