@@ -37,6 +37,7 @@ gem 'stripe'
 gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'stripe_event'
+gem 'rexml', '~> 3.2', '>= 3.2.4' # required for Ruby 3.x
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
