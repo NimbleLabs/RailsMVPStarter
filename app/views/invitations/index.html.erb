@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<div class="my-5 overflow-x-auto">
+
+  <h1>Invitations</h1>
+
+  <table class="table w-full table-compact">
+
+    <thead>
+    <tr>
+      <th>Email</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% @invitations.each do |invitation| %>
+      <tr>
+        <td><%= invitation.email %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "Invite Team Member", new_invitation_path %>
+</div>

@@ -25,6 +25,9 @@
 #  stripe_customer_id     :string
 #  subscription_id        :string
 #  subscription_status    :string
+#  company_name           :string
+#  company_id             :integer
+#  invitation_uuid        :string
 #
 class User < ApplicationRecord
   extend FriendlyId
@@ -38,6 +41,7 @@ class User < ApplicationRecord
 
   validates_presence_of :name
 
+  belongs_to :company, optional: true
   has_many :credit_cards
   has_many :payments
 
@@ -58,6 +62,16 @@ class User < ApplicationRecord
 
   def on_after_create
     UserMailer.with(user: self).welcome_email.deliver_later
+
+    # TODO: remove from model and move to services
+    if company_name.present?
+      self.company = Company.create(name: company_name)
+      save
+    elsif invitation_uuid.present?
+      invitation = Invitation.find_by_uuid(invitation_uuid)
+      self.company = invitation.company
+      save
+    end
   end
 
   def self.from_google(google_identity)

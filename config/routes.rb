@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :invitations
 
   get 'plans', to: 'plans#index', as: 'plans'
   get 'privacy', to: 'static#privacy', as: 'privacy'

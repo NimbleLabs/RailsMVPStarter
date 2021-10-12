@@ -17,6 +17,10 @@
           <%= render "devise/shared/error_messages", resource: resource %>
 
           <div class="mb-3 form-container">
+            <%= f.text_field :company_name, autofocus: true, class: "form-control input input-bordered", placeholder: 'Company' %>
+          </div>
+
+          <div class="mb-3 form-container">
             <%= f.text_field :name, autofocus: true, class: "form-control input input-bordered", placeholder: 'Name' %>
           </div>
 

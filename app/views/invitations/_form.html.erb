@@ -1,0 +1,28 @@
+<div class="card shadow-lg">
+  <div class="card-body">
+
+    <%= form_with(model: invitation) do |form| %>
+      <% if invitation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(invitation.errors.count, "error") %> prohibited this invitation from being saved:</h2>
+
+          <ul>
+            <% invitation.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="mb-3 form-container">
+        <%= form.email_field :email, autocomplete: "email", class: "form-control input input-bordered", placeholder: 'Email' %>
+      </div>
+
+      <div class="actions mt-2">
+        <%= form.submit 'Send Invitation', class: 'btn btn-primary btn-min rounded-pill' %>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
