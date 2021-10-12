@@ -23,6 +23,8 @@
 #  uid                    :string
 #  image_url              :string
 #  stripe_customer_id     :string
+#  subscription_id        :string
+#  subscription_status    :string
 #
 class User < ApplicationRecord
   extend FriendlyId
