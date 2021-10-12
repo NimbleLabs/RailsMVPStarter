@@ -47,6 +47,10 @@ class User < ApplicationRecord
     stripe_customer_id.present? && credit_cards.present?
   end
 
+  def subscriber?
+    subscription_id.present? && subscription_status == 'active'
+  end
+
   def on_before_create
     self.auth_token = SecureRandom.hex.to_s
   end
