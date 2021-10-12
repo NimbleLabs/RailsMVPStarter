@@ -39,6 +39,7 @@ class User < ApplicationRecord
   validates_presence_of :name
 
   has_many :credit_cards
+  has_many :payments
 
   before_create :on_before_create
   after_create :on_after_create

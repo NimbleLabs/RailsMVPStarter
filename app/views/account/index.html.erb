@@ -21,3 +21,37 @@
     <%= link_to 'Purchase MVP Starter!', new_credit_card_path, class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+
+<% if current_user.payments.present? %>
+
+  <div class="my-5 overflow-x-auto">
+
+    <h4 class="my-2">Payments</h4>
+
+    <table class="table w-full table-compact">
+
+      <thead>
+      <tr>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Date</th>
+        <th></th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% current_user.payments.each do |payment| %>
+        <tr>
+          <td><%= number_to_currency(payment.amount/100) %></td>
+          <td><%= payment.description %></td>
+          <td><%= payment.status %></td>
+          <td><%= payment.created %></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>
