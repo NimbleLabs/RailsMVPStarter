@@ -37,7 +37,6 @@
         <th>Description</th>
         <th>Status</th>
         <th>Date</th>
-        <th></th>
       </tr>
       </thead>
 
@@ -47,8 +46,7 @@
           <td><%= number_to_currency(payment.amount/100) %></td>
           <td><%= payment.description %></td>
           <td><%= payment.status %></td>
-          <td><%= payment.created %></td>
-          <td></td>
+          <td><%= Time.at(payment.created).strftime("%m/%d/%Y")  %></td>  
         </tr>
       <% end %>
       </tbody>
