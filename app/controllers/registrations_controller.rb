@@ -9,6 +9,10 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def new
+    if params[:uuid].present?
+      @invitation = Invitation.find_by_uuid(params[:uuid])
+    end
+
     super
   end
 

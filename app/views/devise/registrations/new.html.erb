@@ -6,7 +6,13 @@
 
         <h1 class="display-6 mt-2 mb-4 text-center">Get Started!</h1>
 
-        <%= google_sign_in_button class: 'btn btn-blue w-100 rounded-pill', proceed_to: api_v1_process_google_oauth_url do %>
+        <% google_callback_path = api_v1_process_google_oauth_url %>
+
+        <% if @invitation.present? %>
+          <% google_callback_path = api_v1_process_google_oauth_url(invitation_uuid: @invitation.uuid) %>
+        <% end %>
+
+        <%= google_sign_in_button class: 'btn btn-blue w-100 rounded-pill', proceed_to: google_callback_path do %>
           <%= image_tag('google.png', alt: 'Google', width: 32, height: 32) %>
           <span class="p-2">Sign up with Google</span>
         <% end %>
@@ -38,6 +44,10 @@
             <% end %>
 
           </div>
+
+          <% if @invitation.present? %>
+            <%= f.hidden_field(:invitation_uuid, value: @invitation.uuid) %>
+          <% end %>
 
           <div class="actions mt-2">
             <%= f.submit "Sign up", class: 'btn btn-primary btn-min rounded-pill' %>

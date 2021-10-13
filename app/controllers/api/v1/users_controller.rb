@@ -6,6 +6,11 @@ class Api::V1::UsersController < ApplicationController
     @user = User.from_google(identity)
 
     if @user.persisted?
+      if @user.company.blank? && params[:invitation_uuid].present?
+        invitation =  Invitation.find_by_uuid(params[:invitation_uuid])
+        @user.update(company_id: invitation.company.id)
+      end
+
       flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: 'Google'
       session[:custom_redirect_url] = root_path
       sign_in_and_redirect @user, event: :authentication
