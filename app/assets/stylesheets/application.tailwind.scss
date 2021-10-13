@@ -55,6 +55,10 @@
     font-size: 1rem;
   }
 
+  input {
+    @apply w-full
+  }
+
   .form-container {
     @apply form-control
   }

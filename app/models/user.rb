@@ -47,6 +47,7 @@ class User < ApplicationRecord
 
   before_create :on_before_create
   after_create :on_after_create
+  after_validation :on_after_validation # validate company after main validations run and only if not an invitation
 
   def customer?
     stripe_customer_id.present? && credit_cards.present?
@@ -54,6 +55,17 @@ class User < ApplicationRecord
 
   def subscriber?
     subscription_id.present? && subscription_status == 'active'
+  end
+
+  def on_after_validation
+    return true if invitation_uuid.blank?
+
+    if company_name.blank?
+      errors.add :company, message: "is required"
+      return false
+    else company_name.present?
+      self.company = Company.create(name: company_name)
+    end
   end
 
   def on_before_create
@@ -64,13 +76,10 @@ class User < ApplicationRecord
     UserMailer.with(user: self).welcome_email.deliver_later
 
     # TODO: remove from model and move to services
-    if company_name.present?
-      self.company = Company.create(name: company_name)
-      save
-    elsif invitation_uuid.present?
+    if invitation_uuid.present?
       invitation = Invitation.find_by_uuid(invitation_uuid)
       self.company = invitation.company
-      save
+      return save
     end
   end
 

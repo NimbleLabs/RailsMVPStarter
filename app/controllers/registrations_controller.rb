@@ -6,11 +6,17 @@ class RegistrationsController < Devise::RegistrationsController
     end
 
     super
+
+    # necessary?
+    if resource.persisted? && session[:invitation_uuid].present?
+      session[:invitation_uuid] = nil
+    end
   end
 
   def new
     if params[:uuid].present?
       @invitation = Invitation.find_by_uuid(params[:uuid])
+      session[:invitation_uuid] = @invitation.uuid
     end
 
     super

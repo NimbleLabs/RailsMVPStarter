@@ -22,6 +22,6 @@ class Invitation < ApplicationRecord
   end
 
   def on_after_create
-    UserMailer.with(invitation: self).invitation_email.deliver_later
+    UserMailer.with(invitation: self).invitation_email.deliver_later(wait: 2.seconds)
   end
 end

@@ -4,22 +4,28 @@
 
   <h1>Invitations</h1>
 
-  <table class="table w-full table-compact">
-
-    <thead>
-    <tr>
-      <th>Email</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    <% @invitations.each do |invitation| %>
+  <% if @invitations.present? %>
+    <table class="table w-full table-compact">
+      <thead>
       <tr>
-        <td><%= invitation.email %></td>
+        <th>Email</th>
+        <th></th>
       </tr>
-    <% end %>
-    </tbody>
-  </table>
+      </thead>
 
-  <%= link_to "Invite Team Member", new_invitation_path %>
+      <tbody>
+      <% @invitations.each do |invitation| %>
+        <tr>
+          <td><%= invitation.email %></td>
+          <td><p><%= link_to 'Remove', invitation, method: :delete, data: { confirm: 'Are you sure?' } %></p></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+
+  <% end %>
+
+  <div class="my-5">
+    <%= link_to "Invite Team Member", new_invitation_path, class: 'btn btn-primary' %>
+  </div>
 </div>
