@@ -1,33 +1,38 @@
-<footer class="p-10 footer bg-base-200 text-base-content mt-5">
+<footer class="p-5 footer bg-light">
+
   <div>
-    <span class="footer-title">Company</span>
-    <%= link_to "Home", root_path, class: 'link link-hover' %>
-    <a class="link link-hover">About</a>
-    <a class="link link-hover">Pricing</a>
-    <a class="link link-hover">Jobs</a>
+    <div class="text-uppercase">Company</div>
+    <div><%= link_to "Home", root_path, class: 'link link-hover' %></div>
+    <div><a class="link link-hover">About</a></div>
+    <div><a class="link link-hover">Pricing</a></div>
+    <div><a class="link link-hover">Jobs</a></div>
   </div>
+
   <div>
-    <span class="footer-title">Products and Services</span>
-    <a class="link link-hover">Branding</a>
-    <a class="link link-hover">Design</a>
-    <a class="link link-hover">Marketing</a>
-    <a class="link link-hover">Advertisement</a>
+    <div class="text-uppercase">Products and Services</div>
+    <div><a class="link link-hover">Branding</a></div>
+    <div><a class="link link-hover">Design</a></div>
+    <div><a class="link link-hover">Marketing</a></div>
+    <div><a class="link link-hover">Advertisement</a></div>
   </div>
+
   <div>
-    <span class="footer-title">Legal</span>
-    <%= link_to "Terms and Conditions", terms_path, class: 'link link-hover' %>
-    <%= link_to "Privacy policy", privacy_path, class: 'link link-hover' %>
+    <div class="text-uppercase">Legal</div>
+    <div><%= link_to "Terms and Conditions", terms_path, class: 'link link-hover' %></div>
+    <div><%= link_to "Privacy policy", privacy_path, class: 'link link-hover' %></div>
   </div>
+
   <div>
-    <span class="footer-title">Newsletter</span>
-    <div class="form-control w-80">
+    <span class="text-uppercase">Newsletter</span>
+    <div class="form-control" style="width: 20rem;">
       <label class="label">
         <span class="label-text">Enter your email address</span>
       </label>
       <div class="relative">
-        <input type="text" placeholder="username@site.com" class="w-full pr-16 input input-bordered">
-        <button class="absolute top-0 right-0 rounded-l-none btn btn-primary">Subscribe</button>
+        <input type="text" placeholder="username@site.com" class="w-100 pr-2 form-control">
+        <button class="btn btn-primary">Subscribe</button>
       </div>
     </div>
   </div>
+
 </footer>
