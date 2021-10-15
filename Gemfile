@@ -39,7 +39,7 @@ gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'stripe_event'
 gem 'rexml', '~> 3.2', '>= 3.2.4' # required for Ruby 3.x
-gem 'webpacker' # required for yarn install which is required for new bundling gems
+gem 'webpacker', '4.3.0' # required for yarn install which is required for new bundling gems
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
