@@ -12,9 +12,7 @@
     "esbuild": "^0.13.4",
     "postcss": "^8.3.9",
     "sass": "^1.42.1",
-    "tailwindcss": "^2.2.16",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^3.3.12"
+    "tailwindcss": "^2.2.16"
   },
   "version": "0.1.0",
   "scripts": {
@@ -23,6 +21,6 @@
     "build:tailwind": "tailwindcss -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/tailwind.css"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3"
+    "webpack-dev-server": "^4.3.1"
   }
 }
