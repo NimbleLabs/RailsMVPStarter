@@ -4,10 +4,8 @@
   "dependencies": {
     "@popperjs/core": "^2.10.2",
     "@rails/ujs": "^7.0.0-alpha2",
-    "@rails/webpacker": "4.3.0",
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^10.3.7",
-    "bootstrap": "^5.1.2",
     "daisyui": "^1.14.2",
     "esbuild": "^0.13.4",
     "postcss": "^8.3.9",
@@ -17,13 +15,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
-    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/bootstrap.css --no-source-map --load-path=node_modules",
+    "build:css": "sass ./app/assets/stylesheets/application.bootstrap.scss ./app/assets/builds/bootstrap.css --no-source-map --load-path=app/assets/stylesheets",
     "build:tailwind": "tailwindcss -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/tailwind.css"
-  },
-  "devDependencies": {
-    "webpack-dev-server": "^4.3.1"
-  },
-  "engines": {
-    "node": "12.16.2"
   }
 }
