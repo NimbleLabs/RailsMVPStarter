@@ -4,8 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
-# gem 'rails', git: 'https://github.com/rails/rails.git', tag: 'v7.0.0.alpha2'
+# gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rails', git: 'https://github.com/rails/rails.git', tag: 'v7.0.0.alpha2'
 
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.1'
@@ -31,8 +31,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'friendly_id'
-# gem 'devise', git: 'https://github.com/NimbleLabs/devise.git', branch: 'rails7-alpha-patch', ref: '3deb130'
-gem 'devise'
+gem 'devise', git: 'https://github.com/NimbleLabs/devise.git', branch: 'rails7-alpha-patch', ref: '3deb130'
+# gem 'devise'
 gem 'google_sign_in'
 gem 'stripe'
 gem 'jsbundling-rails'
