@@ -1,17 +1,5 @@
-<%= link_to 'Home', root_path %>
-
-<% if user_signed_in? %>
-
-  <%= link_to "Welcome #{current_user.name}!", account_path %>
-
-  <% if current_user.admin? %>
-    <%= link_to 'Admin', admin_path %>
-  <% end %>
-
-  <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-
+<% if Rails.application.config.css_framework == 'bootstrap' %>
+  <%= render 'shared/bootstrap_nav' %>
 <% else %>
-
-  <%= link_to 'Sign up', new_user_registration_path %>
-
+  <%= render 'shared/tailwind_nav' %>
 <% end %>

@@ -1,0 +1,203 @@
+<script src="https://js.stripe.com/v3/"></script>
+
+<div class="my-5">
+  <h1><%= @title %></h1>
+</div>
+
+<div class="card shadow-lg md:w-1/3 w-full">
+  <div class="card-body">
+
+    <div class="mb-2">
+      <h4>Credit card</h4>
+    </div>
+
+    <form id="payment-form">
+
+      <div class="grid grid-cols-2 gap-2">
+
+        <div class="col-span-2">
+          <div id="card-number" class="form-control stripeInput">
+            <!-- Stripe Card Element -->
+          </div>
+        </div>
+        <div>
+          <div id="card-exp" class="form-control stripeInput">
+            <!-- Stripe Card Expiry Element -->
+          </div>
+        </div>
+        <div>
+          <div id="card-cvc" class="form-control stripeInput">
+            <!-- Stripe Card Expiry Element -->
+          </div>
+        </div>
+      </div>
+
+      <button id="submit" class="btn btn-primary mt-2">
+        <div class="spinner hidden" id="spinner"></div>
+        <span id="button-text">Pay now</span>
+      </button>
+      <p id="card-error" role="alert"></p>
+      <p class="result-message hidden">
+        Payment succeeded, see the result in your
+        <a href="" target="_blank">Stripe dashboard.</a> Refresh the page to pay again.
+      </p>
+    </form>
+
+  </div>
+</div>
+
+<script>
+
+    // A reference to Stripe.js initialized with your real test publishable API key.
+    var stripe = Stripe("<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>");
+    const clientSecret = '<%= @client_secret %>'
+    var subscription_id = null
+
+    <% if @subscription_id.present? %>
+    subscription_id = "<%= @subscription_id %>"
+    <% end %>
+
+    // Disable the button until we have Stripe set up on the page
+    document.querySelector("button").disabled = true;
+
+    var elements = stripe.elements();
+
+    var style = {
+        base: {
+            color: "#32325d",
+            fontFamily: 'Arial, sans-serif',
+            fontSmoothing: "antialiased",
+            fontSize: "16px",
+            "::placeholder": {
+                color: "#9ba2af"
+            }
+        },
+        invalid: {
+            fontFamily: 'Arial, sans-serif',
+            color: "#fa755a",
+            iconColor: "#fa755a"
+        }
+    };
+
+    // Card number
+    var card = elements.create('cardNumber', {
+        'placeholder': 'Card Number',
+        'style': style
+    });
+    card.mount('#card-number');
+
+    card.on("change", function (event) {
+        // Disable the Pay button if there are no card details in the Element
+        document.querySelector("button").disabled = event.empty;
+        document.querySelector("#card-error").textContent = event.error ? event.error.message : "";
+    });
+
+    // Card expiry
+    var exp = elements.create('cardExpiry', {
+        'placeholder': 'MM/YY',
+        'style': style
+    });
+    exp.mount('#card-exp');
+
+    // CVC
+    var cvc = elements.create('cardCvc', {
+        'placeholder': 'CVC',
+        'style': style
+    });
+    cvc.mount('#card-cvc');
+
+
+    var form = document.getElementById("payment-form");
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        // Complete payment when the submit button is clicked
+        payWithCard(stripe, card, clientSecret);
+    });
+
+
+    // Calls stripe.confirmCardPayment
+    // If the card requires authentication Stripe shows a pop-up modal to
+    // prompt the user to enter authentication details without leaving your page.
+    var payWithCard = function (stripe, card, clientSecret) {
+        loading(true);
+        stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                    card: card
+                }
+            })
+            .then(function (result) {
+
+                console.log('confirmCardPayment')
+                console.log(result)
+
+                if (result.error) {
+                    // Show error to your customer
+                    showError(result.error.message);
+                } else {
+                    // The payment succeeded!
+                    const paymentMethodId = result.paymentIntent.payment_method
+                    orderComplete(result.paymentIntent.id, paymentMethodId);
+                }
+            });
+    };
+
+    /* ------- UI helpers ------- */
+
+    // Shows a success message when the payment is complete
+    var orderComplete = function (paymentIntentId, paymentMethodId) {
+        loading(false);
+        document.querySelector(".result-message a")
+            .setAttribute(
+                "href",
+                "https://dashboard.stripe.com/test/payments/" + paymentIntentId
+            );
+        document.querySelector(".result-message").classList.remove("hidden");
+        document.querySelector("button").disabled = true;
+
+        saveCurrentCard(paymentMethodId)
+    };
+
+    // Show the customer the error from Stripe if their card fails to charge
+    var showError = function (errorMsgText) {
+        loading(false);
+        var errorMsg = document.querySelector("#card-error");
+        errorMsg.textContent = errorMsgText;
+        setTimeout(function () {
+            errorMsg.textContent = "";
+        }, 4000);
+    };
+
+    // Show a spinner on payment submission
+    var loading = function (isLoading) {
+        if (isLoading) {
+            // Disable the button and show a spinner
+            document.querySelector("button").disabled = true;
+            document.querySelector("#spinner").classList.remove("hidden");
+            // document.querySelector("#button-text").classList.add("hidden");
+        } else {
+            document.querySelector("button").disabled = false;
+            document.querySelector("#spinner").classList.add("hidden");
+            // document.querySelector("#button-text").classList.remove("hidden");
+        }
+    };
+
+    function saveCurrentCard(paymentMethodId) {
+        fetch("/payments.json", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                'X-CSRF-Token': Rails.csrfToken()
+            },
+            body: JSON.stringify({payment_method_id: paymentMethodId, subscription_id: subscription_id})
+        }).then(function (result) {
+            return result.json();
+        }).then(function (data) {
+            window.location.href = '/account'
+        })
+    }
+
+</script>
+
+
+
+

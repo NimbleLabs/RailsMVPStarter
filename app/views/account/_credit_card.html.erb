@@ -1,0 +1,7 @@
+<div class="card shadow w-80 m-2">
+  <div class="card-body">
+    <h2 class="card-title"><%= "#{credit_card.brand} ending in #{credit_card.last4}" %></h2>
+    <p>Exp date <%= "#{credit_card.exp_month}/#{credit_card.exp_year}" %></p>
+    <p><%= link_to 'Remove', credit_card, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  </div>
+</div>

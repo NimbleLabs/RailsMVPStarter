@@ -7,17 +7,23 @@
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag "application", defer: true %>
+  <% if !Rails.env.test? %>
+    <%= stylesheet_link_tag Rails.application.config.css_framework %>
+  <% end %>
 </head>
 
 <body>
 <%= render 'shared/gtm_noscript' %>
-<br><br>
 
 <%= render 'shared/nav' %>
-<%= render 'shared/display_message' %>
-<%= yield %>
+
+<div class="container">
+  <%= render 'shared/display_message' %>
+  <%= yield %>
+</div>
+
+<%= render 'shared/footer' %>
 
 </body>
 </html>
