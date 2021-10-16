@@ -11,3 +11,11 @@ body {
 }
 
 @import 'beautiful_bootstrap/text';
+@import 'beautiful_bootstrap/spacing';
+
+.small-icon {
+  vertical-align: -.125em;
+  width: 16px;
+  height: 16px;
+  stroke-width: 2;
+}
