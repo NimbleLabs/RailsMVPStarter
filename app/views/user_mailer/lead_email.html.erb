@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+
+<div class="container mt-3">
+
+  <h1>Welcome to example.com</h1>
+  <p>
+    You have successfully signed up to example.com,
+    your email is: <%= @lead.email %>.<br>
+  </p>
+
+  <p>
+    <%= link_to 'Visit Us!', root_url, class: "btn btn-primary" %>
+  </p>
+
+  <p>Thanks for joining and have a great day!</p>
+
+</div>
+</body>
+</html>

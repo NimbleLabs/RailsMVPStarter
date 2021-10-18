@@ -1,0 +1,25 @@
+<%= form_with(model: lead) do |form| %>
+  <% if lead.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lead.errors.count, "error") %> prohibited this lead from being saved:</h2>
+
+      <ul>
+        <% lead.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div style="width: 20rem;">
+    <label class="label mb-2">
+      <span class="label-text">Enter your email address</span>
+    </label>
+
+    <div class="input-group mb-3">
+      <%= form.text_field :email, class: "form-control input-lg text-sm", placeholder: "Email" %>
+      <%= form.submit 'Subscribe', class: "btn btn-primary text-sm fw-bold" %>
+    </div>
+  </div>
+
+<% end %>

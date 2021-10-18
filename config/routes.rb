@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :leads
   get 'plans', to: 'plans#index', as: 'plans'
   get 'privacy', to: 'static#privacy', as: 'privacy'
   get 'terms', to: 'static#terms', as: 'terms'
