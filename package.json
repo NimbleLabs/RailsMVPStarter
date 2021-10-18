@@ -10,15 +10,14 @@
     "esbuild": "^0.13.4",
     "postcss": "^8.3.9",
     "sass": "^1.42.1",
-    "tailwindcss": "^2.2.16"
+    "tailwindcss": "^2.2.16",
+    "webpack": "^4.46.0",
+    "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
   "scripts": {
     "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/templates.scss ./app/assets/builds/templates.css --no-source-map --load-path=app/assets/stylesheets",
     "build:tailwind": "tailwindcss -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/tailwind.css"
-  },
-  "engines": {
-    "node": "12.16.2"
   }
 }
