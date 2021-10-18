@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :leads
 
   get 'templates/index'
   get 'templates/dashboard_sidebar'
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   get 'templates/hero_sections'
   get 'templates/cta_sections'
   get 'templates/promo_sections'
+
   get 'plans', to: 'plans#index', as: 'plans'
   get 'privacy', to: 'static#privacy', as: 'privacy'
   get 'terms', to: 'static#terms', as: 'terms'

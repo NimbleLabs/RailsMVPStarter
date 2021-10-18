@@ -12,9 +12,9 @@
   @include button-variant($blue-500, $blue-500);
 }
 
-.btn {
-  min-width: 150px;
-}
+//.btn {
+//  min-width: 150px;
+//}
 
 a {
   color: $gray-600;
@@ -46,4 +46,12 @@ a:hover {
   .footer-center {
     grid-auto-flow: row dense;
   }
+}
+
+.input-lg {
+  height: 3rem;
+}
+
+.text-sm {
+  font-size: .875rem !important;
 }
