@@ -58,13 +58,21 @@ class User < ApplicationRecord
   end
 
   def on_after_validation
-    return true if invitation_uuid.blank?
+    return true if invitation_uuid.present?
 
     if company_name.blank?
       errors.add :company, message: "is required"
       return false
-    else company_name.present?
+    else
+      company_name.present?
       self.company = Company.create(name: company_name)
+
+      if !company.persisted? && company.errors.any?
+        # TODO: log error
+        errors.add :company, message: "is required"
+        return false
+      end
+
     end
   end
 
