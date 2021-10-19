@@ -2,9 +2,9 @@
   <h1> Buy Rails MVP Plans</h1>
 </div>
 
-<div class="flex">
+<div class="d-flex flex-row mb-5">
 
-  <div class="card shadow md:w-1/3 w-full m-2">
+  <div class="card shadow w-25 m-2">
     <div class="card-body">
       <h4>Monthly Plan</h4>
       <h6><%= "$#{@monthly_plan.amount}/#{@monthly_plan.period}" %></h6>
@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  <div class="card shadow md:w-1/3 w-full m-2">
+  <div class="card shadow w-25 m-2">
     <div class="card-body">
       <h4>Yearly Plan</h4>
       <h6><%= "$#{@yearly_plan.amount}/#{@yearly_plan.period}" %></h6>
@@ -21,7 +21,7 @@
     </div>
   </div>
 
-  <div class="card shadow md:w-1/3 w-full m-2">
+  <div class="card shadow w-25 m-2">
     <div class="card-body">
       <h4>Buy now</h4>
       <h6>$99 one time payment</h6>

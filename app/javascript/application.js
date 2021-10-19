@@ -4,4 +4,4 @@ import Rails from "@rails/ujs"
 window.Rails = Rails;
 Rails.start()
 
-import * as bootstrap from "bootstrap"
+import * as bootstrap from "./bootstrap"

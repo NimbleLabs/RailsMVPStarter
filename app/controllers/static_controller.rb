@@ -12,6 +12,7 @@ class StaticController < ApplicationController
   end
 
   def tailwind_demo
+    render layout: "empty"
   end
 
 end
