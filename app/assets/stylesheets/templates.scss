@@ -1,4 +1,7 @@
+$primary: #6610f2 !default;
+
 @import 'bootstrap/bootstrap';
+@import 'fontawesome-all';
 @import url('https://rsms.me/inter/inter.css');
 
 body {
@@ -11,6 +14,8 @@ body {
 
 @import 'beautiful_bootstrap/text';
 @import 'beautiful_bootstrap/spacing';
+@import 'beautiful_bootstrap/modals';
+@import 'beautiful_bootstrap/borders';
 
 .small-icon {
   vertical-align: -.125em;
@@ -21,10 +26,6 @@ body {
 
 .h-96 {
   height: 25rem;
-}
-
-.border-dashed {
-  border-style: dashed !important;
 }
 
 // Theme colors
@@ -48,8 +49,4 @@ body {
 .text-theme-light {
   color: $indigo-300;
 }
-
-
-
-@import 'fontawesome-all';
 
