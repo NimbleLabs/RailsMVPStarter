@@ -63,17 +63,16 @@ class User < ApplicationRecord
     if company_name.blank?
       errors.add :company, message: "is required"
       return false
-    else
-      company_name.present?
-      self.company = Company.create(name: company_name)
-
-      if !company.persisted? && company.errors.any?
-        # TODO: log error
-        errors.add :company, message: "is required"
-        return false
-      end
-
     end
+
+    self.company = Company.create(name: company_name)
+
+    if !company.persisted? && company.errors.any?
+      # TODO: log error
+      errors.add :company, message: "is required"
+      return false
+    end
+
   end
 
   def on_before_create
