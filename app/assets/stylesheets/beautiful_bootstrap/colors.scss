@@ -1,0 +1,13 @@
+// scss-docs-start btn-variant-loops
+@each $color, $value in $colors {
+  .#{$color} {
+    color: $value;
+  }
+}
+
+@each $color, $value in $grays {
+  .gray-#{$color} {
+    color: $value;
+  }
+}
+

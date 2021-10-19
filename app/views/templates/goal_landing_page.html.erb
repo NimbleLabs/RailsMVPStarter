@@ -1,0 +1,52 @@
+<div class="container-fluid vh-100 pattern-grid-xl bg-white gray-200">
+
+  <div class="container text-dark py-5">
+
+    <div class="px-4 py-5">
+      <h1 class="text-center display-3 fw-bold spacing-close">
+        Join the Journey from <span class="text-primary">0 to 50K</span>
+      </h1>
+      <div class="col-lg-8 mx-auto">
+
+        <div class="card shadow my-4 p-4">
+          <div class="card-body">
+            <div class="lead">
+              I'm starting a new business and am doing it all in <strong>public</strong>. That means I'll be sharing
+              each step along the way: the highs, the lows and everything in between.
+              <br><br>
+              To follow along subscribe to the newsletter below where I will share how I am building products and
+              marketing them to reach the goal of $50K in revenue.
+            </div>
+
+            <div class="d-flex justify-content-center mt-3">
+              <% @lead = Lead.new %>
+
+              <%= form_with(model: @lead, format: :json, id: "lead-form", local: false) do |form| %>
+
+                <div style="width: 20rem;">
+
+                  <div class="input-group mb-3">
+                    <%= form.text_field :email, class: "form-control input-lg font-sm", placeholder: "Email" %>
+                    <%= form.submit 'Subscribe', class: "btn btn-primary font-sm fw-bold" %>
+                  </div>
+
+                  <div id="subscribeSuccess" class="d-none form-text text-success">Thank you for joining!</div>
+                  <div id="subscribeHelp" class="d-none form-text text-danger">This is not a valid email.</div>
+                </div>
+
+              <% end %>
+            </div>
+
+          </div>
+        </div>
+
+        <!--      <div class="mt-3 d-grid gap-2 d-sm-flex justify-content-sm-center">-->
+
+        <!--      </div>-->
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

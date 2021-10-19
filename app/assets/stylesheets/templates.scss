@@ -16,12 +16,19 @@ body {
 @import 'beautiful_bootstrap/spacing';
 @import 'beautiful_bootstrap/modals';
 @import 'beautiful_bootstrap/borders';
+@import 'beautiful_bootstrap/colors';
+
+@import 'pattern';
 
 .small-icon {
   vertical-align: -.125em;
   width: 16px;
   height: 16px;
   stroke-width: 2;
+}
+
+.sidebar {
+  width: 220px;
 }
 
 .h-96 {
@@ -39,7 +46,6 @@ body {
   color: $gray-800;
   background-color: $gray-200;
 }
-
 
 .bg-theme-active {
   color: $gray-100;

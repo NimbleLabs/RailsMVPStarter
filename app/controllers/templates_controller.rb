@@ -50,4 +50,7 @@ class TemplatesController < ApplicationController
 
   def promo_sections
   end
+
+  def goal_landing_page
+  end
 end
