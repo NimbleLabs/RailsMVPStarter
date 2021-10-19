@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'app/index'
   resources :leads
 
   get 'templates', to: 'templates#index', as: 'templates'
