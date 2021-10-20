@@ -1,12 +1,7 @@
 <template>
-  <div class="w-100 pt-3 ps-3 bg-content-theme-color">
-    <h3 class="spacing-close">Dashboard</h3>
-
-    <div class="me-4 h-96 border border-5 border-dashed rounded-3">
-
-    </div>
-
-  </div>
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <router-view :key="$route.path"></router-view>
+  </main>
 </template>
 
 <script>

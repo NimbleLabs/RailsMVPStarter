@@ -1,59 +1,33 @@
 <template>
-  <div id="sidebarMenu" class="d-md-flex flex-column flex-shrink-0 bg-theme-color text-white sidebar collapse">
-    <a href="/" class="d-none d-md-flex align-items-center ms-3 my-3 me-md-auto text-white text-decoration-none">
-      <i class="fa fas fa-flask fs-4 me-2"></i> <span class="fs-4 font-xbold spacing-close">Nimble Labs</span>
-    </a>
-
-    <ul class="nav nav-pills flex-column mb-auto">
-      <li class="nav-item">
-        <a class="nav-link bg-theme-active text-white" aria-current="page" href="#">
-          <i data-feather="home" class="text-theme-light small-icon me-3"></i><span class="font-sm">Dashboard</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
-          <i data-feather="file" class="text-theme-light small-icon me-3"></i><span class="font-sm">Orders</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
-          <i data-feather="shopping-cart" class="text-theme-light small-icon me-3"></i><span class="font-sm">Products</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
-          <i data-feather="users" class="text-theme-light small-icon me-3"></i><span class="font-sm">Customers</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
-          <i data-feather="bar-chart-2" class="text-theme-light small-icon me-3"></i><span class="font-sm">Reports</span>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" href="#">
-          <i data-feather="layers" class="text-theme-light small-icon me-3"></i><span class="font-sm">Integrations</span>
-        </a>
-      </li>
-    </ul>
-
-    <hr>
-    <div class="dropdown ms-3 mb-3">
-      <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-        <img src="https://avatars.githubusercontent.com/u/1183747" alt="" width="32" height="32" class="rounded-circle me-2">
-        <strong>harrisreynolds</strong>
-      </a>
-      <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
-        <li>
-          <hr class="dropdown-divider">
+  <nav id="sidebarMenu" class="col-12 col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" style="">
+    <div class="position-sticky pt-3">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <router-link :to="{ name: 'dashboard' }" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-home" aria-hidden="true">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+              <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            Dashboard
+          </router-link>
         </li>
-        <li><a class="dropdown-item" href="#">Sign out</a></li>
+        <li class="nav-item">
+          <router-link :to="{ name: 'billing' }" class="nav-link">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                 class="feather feather-file" aria-hidden="true">
+              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+              <polyline points="13 2 13 9 20 9"></polyline>
+            </svg>
+            Billing
+          </router-link>
+        </li>
       </ul>
+
     </div>
-  </div>
+  </nav>
 </template>
 
 <script>

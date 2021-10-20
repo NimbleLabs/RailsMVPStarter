@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'app/index'
   resources :leads
 
   get 'templates', to: 'templates#index', as: 'templates'
@@ -41,6 +40,9 @@ Rails.application.routes.draw do
       get 'users/attempt-google-sign-in', to: 'users#process_google_oauth', as: 'process_google_oauth'
     end
   end
+
+  get 'app', to: "app#index", as: "app_index"
+  get 'app/*other' => "app#index"
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 end

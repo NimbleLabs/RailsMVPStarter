@@ -1,5 +1,9 @@
 <template>
-  <div class="d-flex vh-100">
+  <TopNav></TopNav>
+  <div class="container-fluid">
+    <div class="row">
+
+    </div>
     <Sidebar></Sidebar>
     <MainContent></MainContent>
   </div>
@@ -8,9 +12,11 @@
 <script>
 import Sidebar from "./layout/Sidebar";
 import MainContent from "./layout/MainContent";
+import TopNav from "./layout/TopNav";
+
 export default {
   name: "App",
-  components: {MainContent, Sidebar}
+  components: {TopNav, MainContent, Sidebar}
 }
 </script>
 
