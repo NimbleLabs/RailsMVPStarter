@@ -41,5 +41,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'app', to: "app#index", as: "app_index"
+  get 'app/*other' => "app#index"
+
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 end
