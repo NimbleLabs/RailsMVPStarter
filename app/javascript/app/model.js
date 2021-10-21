@@ -5,7 +5,8 @@ let mvp = {
             auth_token: null,
             name: '',
             image_url: null
-        }
+        },
+        loading: false
     }
 }
 
