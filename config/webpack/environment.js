@@ -10,8 +10,7 @@ environment.plugins.prepend(
 environment.plugins.prepend(
     'Define',
     new DefinePlugin({
-        __VUE_OPTIONS_API__: false,
-        // or __VUE_OPTIONS_API__: true,
+        __VUE_OPTIONS_API__: true,
         __VUE_PROD_DEVTOOLS__: false
     })
 )
