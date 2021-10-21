@@ -1,5 +1,21 @@
 class Api::V1::UsersController < ApplicationController
 
+  def current
+    if current_user.blank?
+      render json: { message: 'unauthorized' }, status: :forbidden
+      return
+    end
+
+    user_info = {
+      id: current_user.slug,
+      name: current_user.name,
+      auth_token: current_user.auth_token,
+      image_url: current_user.image_url
+    }
+
+    render json: user_info
+  end
+
   def process_google_oauth
     id_token = flash['google_sign_in']['id_token']
     identity = GoogleSignIn::Identity.new(id_token)

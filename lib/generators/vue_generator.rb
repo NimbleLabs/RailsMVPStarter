@@ -4,10 +4,6 @@ class VueGenerator < Rails::Generators::NamedBase
     model_class = Object::const_get(class_name)
     @attributes = model_class.new.attributes.keys
 
-    puts '****************************'
-    puts @attributes.inspect
-    puts '****************************'
-
     create_details_component
     create_list_component
     create_form_component
