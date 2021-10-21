@@ -25,9 +25,6 @@
 #  stripe_customer_id     :string
 #  subscription_id        :string
 #  subscription_status    :string
-#  company_name           :string
-#  company_id             :integer
-#  invitation_uuid        :string
 #
 class User < ApplicationRecord
   extend FriendlyId

@@ -15,14 +15,6 @@ ActiveRecord::Schema.define(version: 2021_10_18_190700) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "companies", force: :cascade do |t|
-    t.string "name"
-    t.string "slug"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["slug"], name: "index_companies_on_slug"
-  end
-
   create_table "credit_cards", force: :cascade do |t|
     t.string "last4"
     t.string "brand"
@@ -34,15 +26,6 @@ ActiveRecord::Schema.define(version: 2021_10_18_190700) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_credit_cards_on_user_id"
-  end
-
-  create_table "invitations", force: :cascade do |t|
-    t.string "email"
-    t.string "uuid"
-    t.bigint "company_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_invitations_on_company_id"
   end
 
   create_table "leads", force: :cascade do |t|
@@ -91,9 +74,6 @@ ActiveRecord::Schema.define(version: 2021_10_18_190700) do
     t.string "stripe_customer_id"
     t.string "subscription_id"
     t.string "subscription_status"
-    t.string "company_name"
-    t.integer "company_id"
-    t.string "invitation_uuid"
     t.index ["auth_token"], name: "index_users_on_auth_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["provider", "uid"], name: "index_users_on_provider_and_uid"
@@ -102,7 +82,6 @@ ActiveRecord::Schema.define(version: 2021_10_18_190700) do
   end
 
   add_foreign_key "credit_cards", "users"
-  add_foreign_key "invitations", "companies"
   add_foreign_key "leads", "users"
   add_foreign_key "payments", "users"
 end
