@@ -13,6 +13,7 @@
     "esbuild": "^0.13.4",
     "postcss": "^8.3.9",
     "sass": "^1.42.1",
+    "superagent": "^6.1.0",
     "tailwindcss": "^2.2.16",
     "vue": "^3.2.20",
     "vue-loader": "^16.8.1",
