@@ -1,4 +1,7 @@
+$primary: #6610f2 !default;
+
 @import 'bootstrap/bootstrap';
+@import 'fontawesome-all';
 @import url('https://rsms.me/inter/inter.css');
 
 body {
@@ -11,6 +14,11 @@ body {
 
 @import 'beautiful_bootstrap/text';
 @import 'beautiful_bootstrap/spacing';
+@import 'beautiful_bootstrap/modals';
+@import 'beautiful_bootstrap/borders';
+@import 'beautiful_bootstrap/colors';
+
+@import 'pattern';
 
 .small-icon {
   vertical-align: -.125em;
@@ -19,12 +27,12 @@ body {
   stroke-width: 2;
 }
 
-.h-96 {
-  height: 25rem;
+.sidebar {
+  width: 220px;
 }
 
-.border-dashed {
-  border-style: dashed !important;
+.h-96 {
+  height: 25rem;
 }
 
 // Theme colors
@@ -39,7 +47,6 @@ body {
   background-color: $gray-200;
 }
 
-
 .bg-theme-active {
   color: $gray-100;
   background-color: $indigo-600 !important;
@@ -48,8 +55,4 @@ body {
 .text-theme-light {
   color: $indigo-300;
 }
-
-
-
-@import 'fontawesome-all';
 

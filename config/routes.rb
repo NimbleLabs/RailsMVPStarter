@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :invitations
   resources :leads
 
-  get 'templates/index'
+  get 'templates', to: 'templates#index', as: 'templates'
   get 'templates/dashboard_sidebar'
   get 'templates/dashboard_top_nav'
   get 'templates/modal'
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'templates/hero_sections'
   get 'templates/cta_sections'
   get 'templates/promo_sections'
+  get 'templates/goal_landing_page'
 
   get 'plans', to: 'plans#index', as: 'plans'
   get 'privacy', to: 'static#privacy', as: 'privacy'
@@ -38,8 +39,12 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1, format: :json do
       get 'users/attempt-google-sign-in', to: 'users#process_google_oauth', as: 'process_google_oauth'
+      get 'users/current', to: 'users#current'
     end
   end
+
+  get 'app', to: "app#index", as: "app_index"
+  get 'app/*other' => "app#index"
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 end

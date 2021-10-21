@@ -25,9 +25,6 @@
 #  stripe_customer_id     :string
 #  subscription_id        :string
 #  subscription_status    :string
-#  company_name           :string
-#  company_id             :integer
-#  invitation_uuid        :string
 #
 class User < ApplicationRecord
   extend FriendlyId
@@ -35,7 +32,8 @@ class User < ApplicationRecord
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable,
+         :trackable
 
   enum role: [:user, :owner, :admin]
 
@@ -70,9 +68,13 @@ class User < ApplicationRecord
     if !company.persisted? && company.errors.any?
       # TODO: log error
       errors.add :company, message: "is required"
-      return false
+      false
     end
 
+  end
+
+  def first_time_user?
+    sign_in_count == 0
   end
 
   def on_before_create
