@@ -220,7 +220,15 @@ export default class #{class_name}Service extends RestService {
       table_data += "<td>{{#{plural_name.singularize}.#{attribute}}}</td>\n"
     end
 
-    table_data += "<td><a href='javascript:void(0)' @click='onEditClick(#{plural_name.singularize})'>Edit</a></td>\n"
+    edit_link += <<-FILE
+<td>
+    <router-link :to="{ name: '#{plural_name.singularize}-details', params: {id: #{plural_name.singularize}.id} }">
+      View
+    </router-link>
+</td>
+    FILE
+
+    table_data += edit_link
     table_data
   end
 

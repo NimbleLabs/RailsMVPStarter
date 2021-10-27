@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>Users Details</h1>
+  <div class="my-4">
+    <h1 class="spacing-close">Users Details</h1>
 
     <div class="card col-12 col-md-6">
       <div class="card-body">
@@ -12,22 +12,6 @@
           <div>
             <dt>Email</dt>
             <dd>{{user.email}}</dd>
-          </div>
-          <div>
-            <dt>Encrypted_password</dt>
-            <dd>{{user.encrypted_password}}</dd>
-          </div>
-          <div>
-            <dt>Reset_password_token</dt>
-            <dd>{{user.reset_password_token}}</dd>
-          </div>
-          <div>
-            <dt>Reset_password_sent_at</dt>
-            <dd>{{user.reset_password_sent_at}}</dd>
-          </div>
-          <div>
-            <dt>Remember_created_at</dt>
-            <dd>{{user.remember_created_at}}</dd>
           </div>
           <div>
             <dt>Sign_in_count</dt>
@@ -54,10 +38,6 @@
             <dd>{{user.name}}</dd>
           </div>
           <div>
-            <dt>Slug</dt>
-            <dd>{{user.slug}}</dd>
-          </div>
-          <div>
             <dt>Role</dt>
             <dd>{{user.role}}</dd>
           </div>
@@ -76,10 +56,6 @@
           <div>
             <dt>Provider</dt>
             <dd>{{user.provider}}</dd>
-          </div>
-          <div>
-            <dt>Uid</dt>
-            <dd>{{user.uid}}</dd>
           </div>
           <div>
             <dt>Image_url</dt>

@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <h1>Users List</h1>
-
-    <button class="btn btn-primary" @click="onNewUserClick">New User</button>
+  <div class="my-5">
+    <h3 class="spacing-close">Users ({{users.length}})</h3>
 
     <div class="table-responsive">
       <table class="table table-sm">
@@ -18,8 +16,11 @@
         <tr v-for="user in users">
           <td>{{ user.id }}</td>
           <td>{{ user.email }}</td>
-          <td><a href='javascript:void(0)' @click='onEditClick(user)'>Edit</a></td>
-
+          <td>
+            <router-link :to="{ name: 'user-details', params: {id: user.id} }">
+              View
+            </router-link>
+          </td>
         </tr>
         </tbody>
       </table>
@@ -49,11 +50,7 @@ export default {
     })
   },
   methods: {
-    onNewUserClick() {
-    },
     onDeleteClick(user) {
-    },
-    onEditClick(user) {
     }
   }
 }
