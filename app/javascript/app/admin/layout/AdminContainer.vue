@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: "MainContent"
+  name: "AdminContainer"
 }
 </script>
 

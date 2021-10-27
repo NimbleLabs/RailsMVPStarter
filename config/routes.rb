@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   get 'terms', to: 'static#terms', as: 'terms'
 
   resources :credit_cards, path: 'payments', only: [:new, :create, :destroy]
-  get 'admin', to: 'admin#index', as: 'admin'
   get 'account', to: 'account#index', as: 'account'
 
   get 'bootstrap', to: 'static#bootstrap_demo', as: 'bootstrap_demo'
@@ -39,11 +38,16 @@ Rails.application.routes.draw do
     namespace :v1, format: :json do
       get 'users/attempt-google-sign-in', to: 'users#process_google_oauth', as: 'process_google_oauth'
       get 'users/current', to: 'users#current'
+
+      resources :users
     end
   end
 
   get 'app', to: "app#index", as: "app_index"
   get 'app/*other' => "app#index"
+
+  get 'admin', to: "admin#index", as: "admin"
+  get 'admin/*other' => "admin#index"
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
 end

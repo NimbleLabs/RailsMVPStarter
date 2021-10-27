@@ -1,2 +1,27 @@
-<h1>Admin#index</h1>
-<p>Find me in app/views/admin/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Rails MVP Starter</title>
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <script>
+      const STARTER_SYSTEM_ID = '<%= get_auth_token %>';
+  </script>
+
+  <%= javascript_pack_tag 'admin' %>
+  <%= stylesheet_link_tag 'app' %>
+</head>
+<body>
+
+<div id="admin">
+</div>
+
+</body>
+</html>
+
+
+
+
