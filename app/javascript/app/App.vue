@@ -5,6 +5,7 @@
     <Sidebar></Sidebar>
     <MainContent></MainContent>
   </div>
+  <toast v-if="model.toast.message" :text="model.toast.message"></toast>
 </template>
 
 <script>
@@ -13,10 +14,11 @@ import MainContent from "./layout/MainContent";
 import TopNav from "./layout/TopNav";
 import HttpService from "./services/HttpService";
 import LoadingSpinner from "./components/LoadingSpinner";
+import Toast from "./components/Toast";
 
 export default {
   name: "App",
-  components: {LoadingSpinner, TopNav, MainContent, Sidebar},
+  components: {Toast, LoadingSpinner, TopNav, MainContent, Sidebar},
   computed: {
     loading() {
       return this.model.loading
@@ -32,6 +34,7 @@ export default {
     let service = new HttpService()
     service.get(url).then((user) => {
       this.model.user = user
+      this.model.toast.message = 'Welcome to MVP Starter'
     })
   }
 }

@@ -6,7 +6,12 @@
 
 <script>
 export default {
-  name: "Billing"
+  name: "Billing",
+  data() {
+    return {
+      model: mvp.model
+    }
+  }
 }
 </script>
 

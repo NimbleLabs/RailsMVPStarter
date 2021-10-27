@@ -28,5 +28,8 @@
     "build": "esbuild app/javascript/*.* --bundle --outdir=app/assets/builds",
     "build:css": "sass ./app/assets/stylesheets/templates.scss ./app/assets/builds/templates.css --no-source-map --load-path=app/assets/stylesheets",
     "build:tailwind": "tailwindcss -i app/assets/stylesheets/application.tailwind.scss -o ./app/assets/builds/tailwind.css"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^3"
   }
 }

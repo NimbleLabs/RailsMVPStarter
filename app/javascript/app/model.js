@@ -6,7 +6,10 @@ let mvp = {
             name: '',
             image_url: null
         },
-        loading: false
+        loading: false,
+        toast: {
+            message: null
+        }
     }
 }
 
