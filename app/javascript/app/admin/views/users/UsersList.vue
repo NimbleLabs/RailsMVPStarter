@@ -2,14 +2,13 @@
   <div class="my-5">
     <h3 class="spacing-close">Users ({{users.length}})</h3>
 
-    <div class="table-responsive">
-      <table class="table table-sm">
-        <thead>
+    <div class="table-responsive border border-1 rounded-3 shadow-sm p-3">
+      <table>
+        <thead class="bg-gray-500 text-uppercase">
         <tr>
           <th>Id</th>
           <th>Email</th>
           <th></th>
-
         </tr>
         </thead>
         <tbody>
