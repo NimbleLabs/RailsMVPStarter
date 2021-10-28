@@ -2,27 +2,33 @@
   <div class="my-5">
     <h3 class="spacing-close">Users ({{users.length}})</h3>
 
-    <div class="table-responsive border border-1 rounded-3 shadow-sm p-3">
-      <table>
-        <thead class="bg-gray-500 text-uppercase">
-        <tr>
-          <th>Id</th>
-          <th>Email</th>
-          <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="user in users">
-          <td>{{ user.id }}</td>
-          <td>{{ user.email }}</td>
-          <td>
-            <router-link :to="{ name: 'user-details', params: {id: user.id} }">
-              View
-            </router-link>
-          </td>
-        </tr>
-        </tbody>
-      </table>
+    <div class="card">
+      <div class="card-body">
+
+        <div class="table-responsive">
+          <table class="table">
+            <thead class="bg-gray-500 text-uppercase">
+            <tr>
+              <th>Id</th>
+              <th>Email</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="user in users">
+              <td>{{ user.id }}</td>
+              <td>{{ user.email }}</td>
+              <td>
+                <router-link :to="{ name: 'user-details', params: {id: user.id} }">
+                  View
+                </router-link>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </div>
     </div>
 
   </div>
