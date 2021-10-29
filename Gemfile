@@ -42,6 +42,8 @@ gem 'rexml', '~> 3.2', '>= 3.2.4' # required for Ruby 3.x
 gem 'webpacker', '4.3.0' # required for yarn install which is required for new bundling gems
 gem 'bootstrap-email'
 
+gem 'nimble_hub', path: '../nimble_hub'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

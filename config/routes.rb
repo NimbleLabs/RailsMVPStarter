@@ -50,4 +50,6 @@ Rails.application.routes.draw do
   get 'admin/*other' => "admin#index"
 
   mount StripeEvent::Engine, at: '/webhooks/stripe'
+
+  mount NimbleHub::Engine, at: "/nimble"
 end

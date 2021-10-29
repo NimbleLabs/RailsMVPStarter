@@ -41,6 +41,7 @@ class User < ApplicationRecord
 
   has_many :credit_cards
   has_many :payments
+  has_many :integrations, class_name: "NimbleHub::Integration"
 
   before_create :on_before_create
   after_create :on_after_create

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_18_190700) do
+ActiveRecord::Schema.define(version: 2021_10_29_150004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,36 @@ ActiveRecord::Schema.define(version: 2021_10_18_190700) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["slug"], name: "index_leads_on_slug"
     t.index ["user_id"], name: "index_leads_on_user_id"
+  end
+
+  create_table "nimble_hub_data_sources", force: :cascade do |t|
+    t.string "name"
+    t.string "uuid"
+    t.bigint "user_id", null: false
+    t.string "source_type"
+    t.jsonb "metadata", default: "{}"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_nimble_hub_data_sources_on_slug"
+    t.index ["user_id"], name: "index_nimble_hub_data_sources_on_user_id"
+  end
+
+  create_table "nimble_hub_integrations", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.string "access_token"
+    t.string "access_token_secret"
+    t.string "refresh_token"
+    t.integer "token_expires_in"
+    t.datetime "token_expires_at"
+    t.jsonb "auth_info", default: "{}"
+    t.jsonb "metadata", default: "{}"
+    t.string "slug"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["slug"], name: "index_nimble_hub_integrations_on_slug"
+    t.index ["user_id"], name: "index_nimble_hub_integrations_on_user_id"
   end
 
   create_table "payments", force: :cascade do |t|
@@ -83,5 +113,7 @@ ActiveRecord::Schema.define(version: 2021_10_18_190700) do
 
   add_foreign_key "credit_cards", "users"
   add_foreign_key "leads", "users"
+  add_foreign_key "nimble_hub_data_sources", "users"
+  add_foreign_key "nimble_hub_integrations", "users"
   add_foreign_key "payments", "users"
 end
