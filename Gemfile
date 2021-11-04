@@ -35,8 +35,8 @@ gem 'friendly_id'
 gem 'devise'
 gem 'google_sign_in'
 gem 'stripe'
-gem 'jsbundling-rails'
-gem 'cssbundling-rails'
+# gem 'jsbundling-rails'
+# gem 'cssbundling-rails'
 gem 'stripe_event'
 gem 'rexml', '~> 3.2', '>= 3.2.4' # required for Ruby 3.x
 gem 'webpacker', '4.3.0' # required for yarn install which is required for new bundling gems
