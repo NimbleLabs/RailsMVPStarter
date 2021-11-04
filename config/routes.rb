@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :leads
+  resources :coupon_codes, path: "coupons"
 
   get 'templates', to: 'templates#index', as: 'templates'
   get 'templates/dashboard_sidebar'
@@ -33,6 +34,11 @@ Rails.application.routes.draw do
   root to: "static#index"
   devise_for :users, path_names: {sign_in: 'sign-in', sign_up: 'register', sign_out: 'logout'},
              controllers: {registrations: 'registrations'}
+
+  devise_scope :user do
+    get 'app-sumo-deal' => "registrations#deal_signup"
+    # post "registrations/start" => "registrations#start"
+  end
 
   namespace :api do
     namespace :v1, format: :json do

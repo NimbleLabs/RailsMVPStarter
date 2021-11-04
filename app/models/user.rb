@@ -25,6 +25,7 @@
 #  stripe_customer_id     :string
 #  subscription_id        :string
 #  subscription_status    :string
+#  coupon_code            :string
 #
 class User < ApplicationRecord
   extend FriendlyId
@@ -44,6 +45,24 @@ class User < ApplicationRecord
 
   before_create :on_before_create
   after_create :on_after_create
+  after_validation :on_after_validation # validate coupon if present
+
+  def on_after_validation
+    return true if coupon_code.blank?
+    coupon = CouponCode.where(code: coupon_code).first
+
+    if coupon.blank?
+      errors.add :coupon_code, message: "is not a valid coupon code"
+      return false
+    end
+
+    if coupon.redeemed?
+      errors.add :coupon_code, message: "has already been redeemed"
+      return false
+    end
+
+    true
+  end
 
   def customer?
     stripe_customer_id.present? && credit_cards.present?
@@ -63,6 +82,11 @@ class User < ApplicationRecord
 
   def on_after_create
     UserMailer.with(user: self).welcome_email.deliver_later
+
+    if coupon_code.present?
+      coupon = CouponCode.where(code: coupon_code).first
+      coupon.redeem(self) if coupon.present?
+    end
   end
 
   def self.from_google(google_identity)

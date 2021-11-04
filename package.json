@@ -26,8 +26,5 @@
   "version": "0.1.0",
   "scripts": {
     "build:css": "sass ./app/assets/stylesheets/templates.scss ./app/assets/builds/templates.css --no-source-map --load-path=app/assets/stylesheets"
-  },
-  "devDependencies": {
-    "webpack-dev-server": "^3"
   }
 }

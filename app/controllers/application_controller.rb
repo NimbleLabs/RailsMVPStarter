@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
+  
   def ensure_admin
     return true if user_signed_in? && current_user.admin?
 

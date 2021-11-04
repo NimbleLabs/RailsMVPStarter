@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Coupon Codes</h1>
+
+<table class="table table-sm">
+  <thead>
+    <tr>
+      <th>Code</th>
+      <th>Offer</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coupon_codes.each do |coupon_code| %>
+      <tr>
+        <td><%= coupon_code.code %></td>
+        <td><%= coupon_code.offer %></td>
+        <td><%= coupon_code.user&.email %></td>
+        <td><%= link_to 'Show', coupon_code %></td>
+        <td><%= link_to 'Edit', edit_coupon_code_path(coupon_code) %></td>
+        <td><%= link_to 'Destroy', coupon_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coupon Code', new_coupon_code_path %>

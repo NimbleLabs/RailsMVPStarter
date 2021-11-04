@@ -30,4 +30,9 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def deal_signup
+    build_resource
+    session[:deal_signup] = true
+  end
+
 end

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @coupon_code.code %>
+</p>
+
+<p>
+  <strong>Offer:</strong>
+  <%= @coupon_code.offer %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @coupon_code.user&.email %>
+</p>
+
+<%= link_to 'Edit', edit_coupon_code_path(@coupon_code) %> |
+<%= link_to 'Back', coupon_codes_path %>
