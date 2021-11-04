@@ -14,7 +14,7 @@ class CouponCode < ApplicationRecord
 
   validates_uniqueness_of :code
 
-  def already_used?
+  def redeemed?
     user_id.present?
   end
 
