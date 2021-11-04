@@ -1,4 +1,4 @@
-<% if Rails.application.config.css_framework == 'bootstrap' %>
+<% if action_name.index('tailwind').blank? %>
   <%= render 'shared/bootstrap_nav' %>
 <% else %>
   <%= render 'shared/tailwind_nav' %>
