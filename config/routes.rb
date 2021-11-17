@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'templates/goal_landing_page'
 
   get 'plans', to: 'plans#index', as: 'plans'
+  get 'thank-you', to: 'static#thank_you', as: 'thank_you'
   get 'privacy', to: 'static#privacy', as: 'privacy'
   get 'terms', to: 'static#terms', as: 'terms'
 

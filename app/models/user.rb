@@ -73,7 +73,7 @@ class User < ApplicationRecord
   end
 
   def first_time_user?
-    sign_in_count == 0
+    sign_in_count == 1
   end
 
   def on_before_create
