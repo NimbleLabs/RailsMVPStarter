@@ -61,6 +61,14 @@ export default {
       model: mvp.model
     }
   },
+  mounted() {
+    const navLinks = document.querySelectorAll('.nav-item')
+    const menuToggle = document.getElementById('navbarNav')
+    const bsCollapse = new bootstrap.Collapse(menuToggle)
+    navLinks.forEach((navLink) => {
+      navLink.addEventListener('click', () => { bsCollapse.hide() })
+    })
+  },
   computed: {
     userInitials() {
       let userName = this.model.user.name
