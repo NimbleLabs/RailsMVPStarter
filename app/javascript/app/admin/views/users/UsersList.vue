@@ -1,34 +1,28 @@
 <template>
-  <div class="my-5">
-    <h3 class="spacing-close">Users ({{users.length}})</h3>
+  <div>
+    <h2 class="my-4">Users ({{ users.length }})</h2>
 
-    <div class="card">
-      <div class="card-body">
-
-        <div class="table-responsive">
-          <table class="table">
-            <thead class="bg-gray-500 text-uppercase">
-            <tr>
-              <th>Id</th>
-              <th>Email</th>
-              <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="user in users">
-              <td>{{ user.id }}</td>
-              <td>{{ user.email }}</td>
-              <td>
-                <router-link :to="{ name: 'user-details', params: {id: user.id} }">
-                  View
-                </router-link>
-              </td>
-            </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
+    <div class="table-responsive table-container">
+      <table class="table">
+        <thead class="bg-gray-500 text-uppercase">
+        <tr>
+          <th>Id</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="user in users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <router-link :to="{ name: 'user-details', params: {id: user.id} }">
+              View
+            </router-link>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
 
   </div>

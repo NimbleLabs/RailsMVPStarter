@@ -1,4 +1,5 @@
 @import 'bootstrap/bootstrap';
+@import 'beautiful_bootstrap/tables';
 
 .btn-primary {
   @include button-variant($indigo-500, $indigo-500);

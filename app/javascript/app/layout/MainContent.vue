@@ -1,5 +1,5 @@
 <template>
-  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+  <main class="w-100 ms-sm-auto px-4">
     <router-view :key="$route.path"></router-view>
   </main>
 </template>

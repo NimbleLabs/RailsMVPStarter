@@ -1,7 +1,7 @@
 <template>
   <loading-spinner :loading="loading"></loading-spinner>
   <TopNav v-if="model && model.user.id"></TopNav>
-  <div class="container-fluid" v-if="model && model.user.id">
+  <div class="d-flex vh-100" v-if="model && model.user.id">
     <Sidebar></Sidebar>
     <MainContent></MainContent>
   </div>
