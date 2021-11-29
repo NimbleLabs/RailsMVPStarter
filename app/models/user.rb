@@ -47,6 +47,10 @@ class User < ApplicationRecord
   after_create :on_after_create
   after_validation :on_after_validation # validate coupon if present
 
+  def first_name
+    name.present? ? name.split(' ').first : ''
+  end
+
   def on_after_validation
     return true if coupon_code.blank?
     coupon = CouponCode.where(code: coupon_code).first

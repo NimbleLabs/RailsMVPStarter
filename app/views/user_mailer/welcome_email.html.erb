@@ -4,11 +4,28 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
 </head>
 <body>
-<h1>Welcome to example.com, <%= @user.name %></h1>
-<p>
-  You have successfully signed up to example.com,
-  your email is: <%= @user.email %>.<br>
-</p>
-<p>Thanks for joining and have a great day!</p>
+
+<div class="container">
+  <%= image_tag 'Welcome.png', class: 'rounded', style: 'max-width: 800px' %>
+
+  <h1 class="my-5">Hey <%= @user.first_name %>!</h1>
+  <p class="mb-4">
+    Thank you for signing up for Rails MVP Starter.  We can't wait to help you launch your application faster!
+  </p>
+
+  <p class="mb-4">
+    Also, and this is important, please hit the reply button and let me know how I can to help!
+  </p>
+
+  <p class="mb-4">
+    Build something great,
+  </p>
+
+  <p class="mb-4">
+    -- Harris Reynolds
+  </p>
+
+</div>
+
 </body>
 </html>
