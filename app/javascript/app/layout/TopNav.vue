@@ -9,7 +9,7 @@
         <span class="text-white navbar-toggler-icon"></span>
       </button>
 
-      <div class="mt-1 collapse navbar-collapse" data-bs-autoClose="true" id="navbarNav">
+      <div class="mt-1 collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav text-white">
           <li class="nav-item">
             <router-link :to="{ name: 'dashboard' }" class="nav-link text-white">
@@ -64,9 +64,12 @@ export default {
   mounted() {
     const navLinks = document.querySelectorAll('.nav-item')
     const menuToggle = document.getElementById('navbarNav')
-    const bsCollapse = new bootstrap.Collapse(menuToggle)
+
     navLinks.forEach((navLink) => {
-      navLink.addEventListener('click', () => { bsCollapse.hide() })
+      navLink.addEventListener('click', () => {
+        const bsCollapse = new bootstrap.Collapse(menuToggle)
+        bsCollapse.hide() }
+      )
     })
   },
   computed: {
