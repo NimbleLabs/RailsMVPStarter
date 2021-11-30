@@ -1,0 +1,38 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.14/vue.min.js"
+        integrity="sha512-XdUZ5nrNkVySQBnnM5vzDqHai823Spoq1W3pJoQwomQja+o4Nw0Ew1ppxo5bhF2vMug6sfibhKWcNJsG8Vj9tg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script>
+  var app = new Vue({
+    el: '#page-app',
+    data: {
+      email: '',
+      showInvalidMessage: false,
+      invalidMessage: ''
+    },
+    methods: {
+      onSubscribeClick() {
+        this.showInvalidMessage = false
+        fetch("/leads.json", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            'X-CSRF-Token': Rails.csrfToken()
+          },
+          body: JSON.stringify({ lead: {email: this.email} })
+        }).then( (result) => {
+          this.showInvalidMessage = result.status === 422
+          return result.json();
+        }).then( (data) => {
+          if(this.showInvalidMessage) {
+            this.invalidMessage = 'Email ' + data['email'][0]
+            return
+          }
+
+          window.location.href = '/thank-you'
+        })
+
+      }
+    }
+  });
+</script>

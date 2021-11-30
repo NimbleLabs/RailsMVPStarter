@@ -12,16 +12,19 @@
 </head>
 
 <body>
-<%= render 'shared/gtm_noscript' %>
+<div id="page-app">
+  <%= render 'shared/gtm_noscript' %>
 
-<%= render 'shared/nav' %>
+  <%= render 'shared/nav' %>
 
-<div class="container">
-  <%= render 'shared/display_message' %>
-  <%= yield %>
+  <div class="container">
+    <%= render 'shared/display_message' %>
+    <%= yield %>
+  </div>
+
+  <%= render 'shared/footer' %>
 </div>
 
-<%= render 'shared/footer' %>
-
+<%= render 'shared/lead_app' %>
 </body>
 </html>

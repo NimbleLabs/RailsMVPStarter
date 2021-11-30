@@ -22,45 +22,22 @@
     <div><%= link_to "Privacy policy", privacy_path, class: 'link link-hover' %></div>
   </div>
 
-  <div>
-    <div class="text-uppercase mb-3">Newsletter</div>
-
-    <% @lead = Lead.new %>
-
-    <%= form_with(model: @lead, format: :json, id: "lead-form", local: false) do |form| %>
-
-      <div style="width: 20rem;">
+  <% if !lead? %>
+    <div>
+      <div class="text-uppercase mb-3">Newsletter</div>
+      <div class="w-80">
         <label class="label mb-2">
-          <span class="label-text">Enter your email address</span>
+          <span class="label-text">Join our weekly newsletter!</span>
         </label>
-
         <div class="input-group mb-3">
-          <%= form.text_field :email, class: "form-control input-lg text-sm", placeholder: "Email" %>
-          <%= form.submit 'Subscribe', class: "btn btn-primary text-sm fw-bold" %>
+          <input v-model="email" placeholder="Email" class="form-control input-lg text-sm">
+          <button @click="onSubscribeClick" class="btn btn-primary w-20 text-sm fw-bold">Join</button>
         </div>
-
-        <div id="subscribeSuccess" class="d-none form-text text-success">Thank you for joining!</div>
-        <div id="subscribeHelp" class="d-none form-text text-danger">This is not a valid email.</div>
+        <div v-if="showInvalidMessage" class="red-400">
+          {{invalidMessage}}
+        </div>
       </div>
-
-    <% end %>
-
-  </div>
+    </div>
+  <% end %>
 
 </footer>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<script>
-    window.addEventListener("load", () => {
-        const element = document.querySelector("#lead-form");
-        element.addEventListener("ajax:success", (event) => {
-            $( "#subscribeSuccess" ).removeClass( "d-none" )
-            $( "#subscribeHelp" ).addClass( "d-none" );
-        });
-        element.addEventListener("ajax:error", () => {
-            $( "#subscribeHelp" ).removeClass( "d-none" )
-            $( "#subscribeSuccess" ).addClass( "d-none" );
-        });
-    });
-</script>
