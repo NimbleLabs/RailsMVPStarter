@@ -1,0 +1,36 @@
+<div class="container my-5">
+
+  <h1>Blog</h1>
+
+  <div class="row my-5">
+
+    <% @posts.each do |post| %>
+
+      <div class="col-md-3 mb-5">
+        <div class="card h-100">
+
+          <% if post.image.attached? %>
+            <%= image_tag post.image, class: 'card-img-top' %>
+          <% end %>
+
+          <div class="card-body">
+            <h5 class="card-title"><%= post.title %></h5>
+
+            <%= link_to 'View Post', post, class: "card-link me-2" %>
+
+            <% if user_signed_in? && current_user.admin? %>
+              <%= render 'shared/admin_edit_links', edit_path: edit_post_path(post), delete_path: post_path(post) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Create New Post', new_post_path, class: 'btn btn-primary' %>
+  <% end %>
+
+</div>

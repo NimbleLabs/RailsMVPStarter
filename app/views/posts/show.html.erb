@@ -1,0 +1,26 @@
+<% content_for :title do %>
+  <%= @post.title %>
+<% end %>
+
+<div class="container mt-3 mb-5">
+
+  <h1><%= @post.title %></h1>
+
+  <div class="rich-text-content my-4">
+    <%= @post.content.html_safe %>
+  </div>
+
+  <div class="my-5">
+    <% if @post.image.attached? %>
+      <img class="w-50" src="<%= url_for(@post.image) %>">
+    <% end %>
+  </div>
+
+  <%= link_to 'Back to Blog', posts_path, class: 'btn btn-primary'  %>
+
+  <% if user_signed_in? && current_user.admin? %>
+    <%= link_to 'Edit Post', edit_post_path(@post), class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+

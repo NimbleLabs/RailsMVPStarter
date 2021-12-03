@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :posts, path: "blog"
+  resources :photos
   resources :leads
   resources :coupon_codes, path: "coupons"
 
