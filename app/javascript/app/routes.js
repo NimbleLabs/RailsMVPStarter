@@ -1,6 +1,6 @@
-import ContentPane from "./layout/ContentPane.vue";
-import Dashboard from "./views/Dashboard.vue";
-import Billing from "./views/Billing.vue";
+import ContentPane from "./layout/ContentPane";
+import Dashboard from "./views/Dashboard";
+import Billing from "./views/Billing";
 
 const routes = [
     {

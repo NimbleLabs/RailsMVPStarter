@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import Sidebar from "./layout/Sidebar.vue";
-import MainContent from "./layout/MainContent.vue";
-import TopNav from "./layout/TopNav.vue";
+import Sidebar from "./layout/Sidebar";
+import MainContent from "./layout/MainContent";
+import TopNav from "./layout/TopNav";
 import HttpService from "./services/HttpService";
-import LoadingSpinner from "./components/LoadingSpinner.vue";
-import Toast from "./components/Toast.vue";
+import LoadingSpinner from "./components/LoadingSpinner";
+import Toast from "./components/Toast";
 
 export default {
   name: "App",

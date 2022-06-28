@@ -7,7 +7,9 @@ module.exports = {
   devtool: "source-map",
   entry: {
     application: "./app/javascript/application.js",
-    app: "./app/javascript/app.js"
+    app: "./app/javascript/app.js",
+    bootstrap: "./app/javascript/bootstrap.js",
+    photos: "./app/javascript/photos.js"
   },
   output: {
     filename: "[name].js",
@@ -21,6 +23,9 @@ module.exports = {
         loader: 'vue-loader'
       }
     ]
+  },
+  resolve: {
+    extensions: ['.js', '.vue'],
   },
   plugins: [
     new VueLoaderPlugin(),
