@@ -25,6 +25,7 @@
 #  stripe_customer_id     :string
 #  subscription_id        :string
 #  subscription_status    :string
+#  coupon_code            :string
 #
 class User < ApplicationRecord
   extend FriendlyId
@@ -47,6 +48,10 @@ class User < ApplicationRecord
   after_create :on_after_create
   after_validation :on_after_validation # validate company after main validations run and only if not an invitation
 
+  def first_name
+    name.present? ? name.split(' ').first : ''
+  end
+
   def customer?
     stripe_customer_id.present? && credit_cards.present?
   end
@@ -56,6 +61,12 @@ class User < ApplicationRecord
   end
 
   def on_after_validation
+    check_company_validation
+    #return is_company_valid if !is_company_valid
+    #return check_coupon_validation
+  end
+
+  def check_company_validation
     return true if invitation_uuid.present?
 
     if company_name.blank?
@@ -71,10 +82,28 @@ class User < ApplicationRecord
       false
     end
 
+    true
+  end
+
+  def check_coupon_validation
+    return true if coupon_code.blank?
+    coupon = CouponCode.where(code: coupon_code).first
+
+    if coupon.blank?
+      errors.add :coupon_code, message: "is not a valid coupon code"
+      return false
+    end
+
+    if coupon.redeemed?
+      errors.add :coupon_code, message: "has already been redeemed"
+      return false
+    end
+
+    true
   end
 
   def first_time_user?
-    sign_in_count == 0
+    sign_in_count == 1
   end
 
   def on_before_create
@@ -89,6 +118,11 @@ class User < ApplicationRecord
       invitation = Invitation.find_by_uuid(invitation_uuid)
       self.company = invitation.company
       return save
+    end
+
+    if coupon_code.present?
+      coupon = CouponCode.where(code: coupon_code).first
+      coupon.redeem(self) if coupon.present?
     end
   end
 

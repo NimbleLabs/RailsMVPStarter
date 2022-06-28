@@ -1,4 +1,22 @@
 class Api::V1::UsersController < ApplicationController
+  before_action :authenticate_user!, only: %i[ index show destroy ]
+  before_action :ensure_admin, only: %i[ index show destroy ]
+
+  def index
+    @users = User.all #.paginate(page: params[:page])
+    render json: @users
+  end
+
+  def show
+    @user = User.find(params[:id])
+    render json: @user
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    render json: {status: 'ok', message: 'User deleted'}
+  end
 
   def current
     if current_user.blank?

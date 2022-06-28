@@ -26,6 +26,7 @@ class LeadsController < ApplicationController
 
     respond_to do |format|
       if @lead.save
+        cookies[:joined_community] = "1"
         format.html { redirect_to @lead, notice: "Lead was successfully created." }
         format.json { render :show, status: :created, location: @lead }
       else

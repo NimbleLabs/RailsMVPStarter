@@ -1,9 +1,9 @@
+<% if @invitation.blank? && session[:invitation_uuid].present? %>
+  <% @invitation = Invitation.find_by_uuid(session[:invitation_uuid]) %>
+<% end %>
+
 <div class="row justify-content-md-center my-4">
   <div class="col-12 col-md-5">
-
-    <% if @invitation.blank? && session[:invitation_uuid].present? %>
-      <% @invitation = Invitation.find_by_uuid(session[:invitation_uuid]) %>
-    <% end %>
 
     <div class="card shadow-lg">
       <div class="card-body">
@@ -58,23 +58,22 @@
               </div>
             <% end %>
 
-          </div>
+            <% if @invitation.present? %>
+              <%= f.hidden_field(:invitation_uuid, value: @invitation.uuid) %>
+              <%= f.hidden_field(:email, value: @invitation.email) %>
+            <% end %>
 
-          <% if @invitation.present? %>
-            <%= f.hidden_field(:invitation_uuid, value: @invitation.uuid) %>
-            <%= f.hidden_field(:email, value: @invitation.email) %>
-          <% end %>
+            <div class="actions mt-2">
+              <%= invisible_recaptcha_tags text: 'Sign up', class: "btn btn-primary btn-min rounded-pill" %>
 
-          <div class="actions mt-2">
-            <%= f.submit "Sign up", class: 'btn btn-primary btn-min rounded-pill' %>
-          </div>
+              <% if @invitation.blank? %>
+                <%= render "devise/shared/links" %>
+              <% end %>
+            </div>
+
         <% end %>
-
-        <% if @invitation.blank? %>
-          <%= render "devise/shared/links" %>
-        <% end %>
+        </div>
       </div>
     </div>
-
   </div>
 </div>

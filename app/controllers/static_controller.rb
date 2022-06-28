@@ -2,6 +2,9 @@ class StaticController < ApplicationController
   def index
   end
 
+  def thank_you
+  end
+
   def privacy
   end
 

@@ -1,16 +1,17 @@
 import {createApp} from 'vue'
+import App from '../app/admin/Admin.vue'
 import * as VueRouter from 'vue-router';
-import App from '../app/App.vue'
-import routes from '../app/routes'
+import routes from '../app/admin/routes'
 import Rails from "@rails/ujs";
 window.Rails = Rails;
-const mvp = require('../app/model')
+import * as bootstrap from "../bootstrap"
+window.bootstrap = bootstrap;
+const mvp = require('../app/admin/model')
 window.mvp = mvp
 
-console.log('Starting app')
+console.log('Starting admin')
 
 const router = VueRouter.createRouter({
-    // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
     history: VueRouter.createWebHistory(),
     routes, // short for `routes: routes`
 })
@@ -18,7 +19,7 @@ const router = VueRouter.createRouter({
 document.addEventListener('DOMContentLoaded', () => {
     const app = createApp(App)
     app.use(router)
-    const vm = app.mount('#app')
+    const vm = app.mount('#admin')
 })
 
 

@@ -15,3 +15,4 @@ Rails.start()
 // ActiveStorage.start()
 
 import * as bootstrap from "../bootstrap"
+import "../photos"

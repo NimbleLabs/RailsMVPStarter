@@ -1,4 +1,6 @@
 @import 'bootstrap/bootstrap';
+@import 'beautiful_bootstrap/tables';
+@import 'trix';
 
 .btn-primary {
   @include button-variant($indigo-500, $indigo-500);
@@ -11,10 +13,6 @@
 .btn-blue {
   @include button-variant($blue-500, $blue-500);
 }
-
-//.btn {
-//  min-width: 150px;
-//}
 
 a {
   color: $gray-600;
@@ -70,4 +68,27 @@ a:hover {
 
 .text-sm {
   font-size: .875rem !important;
+}
+
+.rich-text-content {
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  div {
+    font-size: 1.2rem;
+  }
+
+  img {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  pre {
+    padding: 10px;
+    background-color: #2E2F30;
+    color: chartreuse;
+    border-radius: 4px;
+  }
 }

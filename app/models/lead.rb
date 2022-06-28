@@ -22,7 +22,7 @@ class Lead < ApplicationRecord
   private
 
   def on_after_create
-    UserMailer.with(user: self).lead_email.deliver_later
+    UserMailer.with(lead: self).lead_email.deliver_later
   end
 
   def email_prefix

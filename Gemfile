@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.2'
+ruby '3.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
-gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rails', '7.0.3'
 # gem 'rails', git: 'https://github.com/rails/rails.git', tag: 'v7.0.0.alpha2'
 
 # Use postgresql as the database for Active Record
@@ -39,8 +39,10 @@ gem 'jsbundling-rails'
 gem 'cssbundling-rails'
 gem 'stripe_event'
 gem 'rexml', '~> 3.2', '>= 3.2.4' # required for Ruby 3.x
-gem 'webpacker', '4.3.0' # required for yarn install which is required for new bundling gems
+# gem 'webpacker', '4.3.0' # required for yarn install which is required for new bundling gems
 gem 'bootstrap-email'
+gem 'recaptcha'
+gem "httparty"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

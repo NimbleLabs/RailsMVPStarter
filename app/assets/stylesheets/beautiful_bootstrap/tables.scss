@@ -1,0 +1,39 @@
+.table > :not(:first-child) {
+  border-top: 1px solid currentColor;
+}
+
+.table {
+  margin-bottom: 0px;
+  width: 100%;
+}
+
+.table-container {
+  border-radius: 0.3rem !important;
+  border: 1px solid #dee2e6 !important;
+}
+
+.table thead {
+  color: #6c757d;
+  background-color: #f8f9fa;
+  font-size: 0.75rem;
+  text-transform: uppercase !important;
+  border-bottom: 1px solid #dee2e6 !important;
+
+  tr {
+    border-bottom: 1px solid #dee2e6 !important;
+
+    th {
+      padding: 1rem !important;
+      font-weight: 400 !important;
+    }
+  }
+}
+
+.table tbody {
+  tr {
+    td {
+      padding: 1rem !important;
+    }
+  }
+}
+
