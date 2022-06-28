@@ -1,12 +1,12 @@
 import {createApp} from 'vue'
 import * as VueRouter from 'vue-router';
-import App from '../app/App.vue'
-import routes from '../app/routes'
+import App from './app/App.vue'
+import routes from './app/routes'
 import Rails from "@rails/ujs";
 window.Rails = Rails;
-import * as bootstrap from "../bootstrap"
+import * as bootstrap from "./bootstrap"
 window.bootstrap = bootstrap;
-const mvp = require('../app/model')
+const mvp = require('./app/model')
 window.mvp = mvp
 
 console.log('Starting app')
