@@ -6,26 +6,29 @@
   <%= render 'shared/google_tag_manager' %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= stylesheet_link_tag 'bootstrap' %>
+  <%= stylesheet_link_tag "tailwind", "inter-font" %>
   <%= javascript_include_tag "application", defer: true %>
+  <script defer src="https://unpkg.com/alpinejs@3.10.3/dist/cdn.min.js"></script>
 </head>
 
 <body>
-<div id="page-app">
-  <%= render 'shared/gtm_noscript' %>
 
-  <%= render 'shared/nav' %>
+<%= yield %>
 
-  <div class="container">
-    <%= render 'shared/display_message' %>
-    <%= yield %>
-  </div>
+<!--<div id="page-app">-->
+  <%#= render 'shared/gtm_noscript' %>
 
-  <%= render 'shared/footer' %>
-</div>
+  <%#= render 'shared/nav' %>
 
-<%= render 'shared/lead_app' %>
+<!--  <div class="container">-->
+    <%#= render 'shared/display_message' %>
+    <%#= yield %>
+<!--  </div>-->
+
+  <%#= render 'shared/footer' %>
+<!--</div>-->
+
+<%#= render 'shared/lead_app' %>
 <script src="/js/trix.js"></script>
 </body>
 </html>
