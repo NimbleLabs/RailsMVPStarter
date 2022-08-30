@@ -9,7 +9,8 @@ module.exports = {
     application: "./app/javascript/application.js",
     app: "./app/javascript/app.js",
     bootstrap: "./app/javascript/bootstrap.js",
-    photos: "./app/javascript/photos.js"
+    photos: "./app/javascript/photos.js",
+    admin: "./app/javascript/admin.js"
   },
   output: {
     filename: "[name].js",

@@ -1,51 +1,83 @@
 <template>
-  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow-sm">
-    <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="/">MVP Starter Admin</a>
-    <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse"
-            data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
-            aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-lg navbar-dark d-md-none bg-theme-color">
+        <div class="container-fluid">
+            <a class="text-white fs-4 text-decoration-none" href="#">
+                <i class="fa fas fa-flask me-2"></i> <span class="font-xbold spacing-close">Nimble Labs</span>
+            </a>
 
-    <div class="ms-auto me-2 d-flex align-items-center">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="text-white navbar-toggler-icon"></span>
+            </button>
 
-      <div v-if="model.user.image_url" style="width: 34px; height: 34px;"
-           class="d-flex align-items-center rounded-circle bg-dark text-white">
-        <img :src="model.user.image_url" class="rounded-circle" style="width: 34px; height: 34px;">
-      </div>
+            <div class="mt-1 collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav text-white">
+                    <li class="nav-item">
+                        <router-link :to="{ name: 'users' }" class="nav-link text-white">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                 class="feather feather-users">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                            <span class="ms-2">Users</span>
+                        </router-link>
+                    </li>
 
-      <div v-else-if="model.user.name" style="width: 34px; height: 34px;"
-           class="d-flex align-items-center rounded-circle bg-light text-dark">
-        <div class="w-100 text-center text-uppercase">{{userInitials}}</div>
-      </div>
-    </div>
+                    <li class="nav-item">
+                        <a href="javascript:void(0)" class="nav-link d-flex align-items-center text-white text-decoration-none">
 
-  </header>
+                            <img v-if="model.user.image_url" :src="model.user.image_url" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <div v-else-if="model.user.name" style="width: 34px; height: 34px;"
+                                 class="d-flex align-items-center rounded-circle bg-light text-dark me-2">
+                                <div class="w-100 text-center text-uppercase">{{userInitials}}</div>
+                            </div>
+
+                            <strong>{{model.user.name}}</strong>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
 </template>
 
 <script>
 export default {
-  name: "AdminTopNav",
-  data() {
-    return {
-      model: mvp.model
-    }
-  },
-  computed: {
-    userInitials() {
-      let userName = this.model.user.name
-      const words = userName.split(' ');
+    name: "AdminTopNav",
+    data() {
+        return {
+            model: mvp.model
+        }
+    },
+    mounted() {
+        const navLinks = document.querySelectorAll('.nav-item')
+        const menuToggle = document.getElementById('navbarNav')
 
-      if(words.length === 1) {
-        return userName.substring(0,1)
-      }
+        navLinks.forEach((navLink) => {
+            navLink.addEventListener('click', () => {
+                const bsCollapse = new bootstrap.Collapse(menuToggle)
+                bsCollapse.hide() }
+            )
+        })
+    },
+    computed: {
+        userInitials() {
+            let userName = this.model.user.name
+            const words = userName.split(' ');
 
-      return userName.substring(0,1) + words[1].substring(0,1)
+            if(words.length === 1) {
+                return userName.substring(0,1)
+            }
+
+            return userName.substring(0,1) + words[1].substring(0,1)
+        }
     }
-  }
 }
 </script>
 
-<style scoped>
+<style>
 
 </style>

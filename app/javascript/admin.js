@@ -1,12 +1,12 @@
 import {createApp} from 'vue'
-import App from '../app/admin/Admin.vue'
+import App from './app/admin/Admin.vue'
 import * as VueRouter from 'vue-router';
-import routes from '../app/admin/routes'
+import routes from './app/admin/routes'
 import Rails from "@rails/ujs";
 window.Rails = Rails;
-import * as bootstrap from "../bootstrap"
+import * as bootstrap from "./bootstrap"
 window.bootstrap = bootstrap;
-const mvp = require('../app/admin/model')
+const mvp = require('./app/admin/model')
 window.mvp = mvp
 
 console.log('Starting admin')

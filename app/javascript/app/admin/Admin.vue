@@ -1,6 +1,6 @@
 <template>
   <admin-top-nav></admin-top-nav>
-  <div class="container-fluid" v-if="model && model.user.id">
+  <div class="d-flex vh-100" v-if="model && model.user.id">
     <admin-sidebar></admin-sidebar>
     <admin-container></admin-container>
   </div>
