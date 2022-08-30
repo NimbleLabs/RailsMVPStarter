@@ -63,7 +63,10 @@ export default {
   <div>
     <h1>#{class_name.pluralize} List</h1>
 
-    <button class="btn btn-primary" @click="onNew#{class_name}Click">New #{class_name}</button>
+    <router-link :to="{ name: 'new-#{plural_name.singularize}' }" class="btn btn-primary">
+            New #{class_name}
+    </router-link>
+
 
     <div class="table-responsive">
       <table class="table table-sm">
@@ -104,8 +107,6 @@ export default {
       })
   },
   methods: {
-    onNew#{class_name}Click() {
-    },
     onDeleteClick(#{plural_name.singularize}) {
     },
     onEditClick(#{plural_name.singularize}) {
@@ -131,7 +132,14 @@ export default {
 
     <form>
 #{get_form_fields}
-      <button type="submit" class="btn btn-primary" @click.prevent="onSaveClick">Save</button>
+
+      <div class="mb-3">
+        <button type="submit" class="btn btn-primary" @click.prevent="onSaveClick">Save</button>
+        <router-link :to="{ name: '#{plural_name}' }" class="btn btn-secondary">
+            Cancel
+        </router-link>
+      </div>
+
     </form>
 
   </div>
@@ -220,7 +228,7 @@ export default class #{class_name}Service extends RestService {
       table_data += "<td>{{#{plural_name.singularize}.#{attribute}}}</td>\n"
     end
 
-    edit_link += <<-FILE
+    edit_link = <<-FILE
 <td>
     <router-link :to="{ name: '#{plural_name.singularize}-details', params: {id: #{plural_name.singularize}.id} }">
       View
