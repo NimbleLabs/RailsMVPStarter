@@ -5,11 +5,11 @@ import Rails from "@rails/ujs"
 window.Rails = Rails;
 // import Turbolinks from "turbolinks"
 // import * as ActiveStorage from "@rails/activestorage"
-import "channels"
+// import "channels"
 
 Rails.start()
 // Turbolinks.start()
 // ActiveStorage.start()
 
-import * as bootstrap from "../bootstrap"
-import "../photos"
+import * as bootstrap from "./bootstrap"
+import "./photos"
