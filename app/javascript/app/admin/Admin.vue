@@ -1,6 +1,6 @@
 <template>
   <admin-top-nav></admin-top-nav>
-  <div class="container-fluid" v-if="model && model.user.id">
+  <div class="d-flex vh-100" v-if="model && model.user.id">
     <admin-sidebar></admin-sidebar>
     <admin-container></admin-container>
   </div>
@@ -24,7 +24,7 @@ export default {
     let service = new HttpService()
     service.get(url).then((user) => {
       this.model.user = user
-      this.model.toast.message = 'Welcome to MVP Starter'
+      this.model.toast.message = 'Welcome to JH Experience!'
     })
   }
 }

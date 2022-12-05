@@ -338,9 +338,9 @@ export default {
 
   def create_service_class
     create_file "app/javascript/app/services/#{class_name}Service.js", <<-FILE
-import RestService from './RestService'
+import RailsRestService from './RailsRestService'
 
-export default class #{class_name}Service extends RestService {
+export default class #{class_name}Service extends RailsRestService {
   constructor() {
     super('#{plural_name}')
   }
